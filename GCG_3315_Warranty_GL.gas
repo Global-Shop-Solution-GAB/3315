@@ -1,0 +1,422 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Warranty GL Maintenance")
+gui.SS_Form1..size(10680,7785)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_txtID.create(label,"Warranty Plan ID",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtID.create(textbox,"",True,1800,330,0,100,335,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtID.event(lostfocus,txtid_lostfocus)
+gui.SS_Form1.cmd_txtID.create(button)
+gui.SS_Form1.cmd_txtID.caption("^")
+gui.SS_Form1.cmd_txtID.visible(True)
+gui.SS_Form1.cmd_txtID.size(330,330)
+gui.SS_Form1.cmd_txtID.zorder(0)
+gui.SS_Form1.cmd_txtID.position(1985,335)
+gui.SS_Form1.cmd_txtID.enabled(True)
+gui.SS_Form1.cmd_txtID.fontname("Arial")
+gui.SS_Form1.cmd_txtID.fontsize(8)
+gui.SS_Form1.cmd_txtID.event(click,cmd_txtid_click)
+gui.SS_Form1.lbl_txtPrefix.create(label,"Warranty Prefix",True,1800,200,1,100,750,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPrefix.create(textbox,"",True,1800,330,0,100,950,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtPrefix.event(lostfocus,txtprefix_lostfocus)
+gui.SS_Form1.lbl_dtpStart.create(label,"Start Date",True,1800,200,1,100,1365,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpStart.create(datepicker)
+gui.SS_Form1.dtpStart.visible(True)
+gui.SS_Form1.dtpStart.size(1800,345)
+gui.SS_Form1.dtpStart.zorder(0)
+gui.SS_Form1.dtpStart.position(100,1565)
+gui.SS_Form1.dtpStart.enabled(True)
+gui.SS_Form1.dtpStart.checkbox(False)
+gui.SS_Form1.lbl_dtpStop.create(label,"Stop Date",True,1800,200,1,1985,1365,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpStop.create(datepicker)
+gui.SS_Form1.dtpStop.visible(True)
+gui.SS_Form1.dtpStop.size(1800,345)
+gui.SS_Form1.dtpStop.zorder(0)
+gui.SS_Form1.dtpStop.position(1985,1565)
+gui.SS_Form1.dtpStop.enabled(True)
+gui.SS_Form1.dtpStop.checkbox(False)
+gui.SS_Form1.lbl_txtGL.create(label,"GL Account",True,1800,200,1,100,2080,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtGL.create(textbox,"",True,1800,330,0,100,2280,True,0,Arial,8,16777215,1)
+gui.SS_Form1.cmd_txtGL.create(button)
+gui.SS_Form1.cmd_txtGL.caption("^")
+gui.SS_Form1.cmd_txtGL.visible(True)
+gui.SS_Form1.cmd_txtGL.size(330,330)
+gui.SS_Form1.cmd_txtGL.zorder(0)
+gui.SS_Form1.cmd_txtGL.position(1985,2280)
+gui.SS_Form1.cmd_txtGL.enabled(True)
+gui.SS_Form1.cmd_txtGL.fontname("Arial")
+gui.SS_Form1.cmd_txtGL.fontsize(8)
+gui.SS_Form1.cmd_txtGL.event(click,cmd_txtgl_click)
+gui.SS_Form1.cmdSave.create(button)
+gui.SS_Form1.cmdSave.caption("Save")
+gui.SS_Form1.cmdSave.visible(True)
+gui.SS_Form1.cmdSave.size(1000,360)
+gui.SS_Form1.cmdSave.zorder(0)
+gui.SS_Form1.cmdSave.position(100,2695)
+gui.SS_Form1.cmdSave.enabled(True)
+gui.SS_Form1.cmdSave.fontname("Arial")
+gui.SS_Form1.cmdSave.fontsize(8)
+gui.SS_Form1.cmdSave.event(click,cmdsave_click)
+gui.SS_Form1.gsfgGL.create(gsflexgrid)
+gui.SS_Form1.gsfgGL.FixedRows(0)
+gui.SS_Form1.gsfgGL.FixedCols(0)
+gui.SS_Form1.gsfgGL.visible(True)
+gui.SS_Form1.gsfgGL.size(10260,3885)
+gui.SS_Form1.gsfgGL.zorder(0)
+gui.SS_Form1.gsfgGL.position(100,3200)
+gui.SS_Form1.gsfgGL.enabled(True)
+gui.SS_Form1.gsfgGL.event(commandclick,gsfggl_commandclick)
+
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+
+Program.Sub.Main.Start
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Buildgrid)
+Gui.SS_Form1..Show
+
+Program.Sub.Main.End
+
+
+program.sub.cmd_txtid_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtid_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sCol.Declare(String)
+V.Local.sColW.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.String.Concat("Select DISTINCT(PLAN_ID), ID FROM GCG_3315__PLANID_USRFLD Where ID = '1' Order BY PLAN_ID","",V.Local.sSQL)
+F.Intrinsic.String.Split("Warranty Plan ID*!*ID","*!*",V.Local.sCol)
+'Split Column widths into an array
+F.Intrinsic.String.Split("6700*!*0","*!*",V.Local.sColW)
+
+'Enter prompt (VAR3), e.g., "Selct a part"
+F.Intrinsic.UI.Browser("Select Warranty Plan","CON",V.Local.sSQL,V.Local.sCol,V.Local.sColW,5000,8000,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtID.Text(V.Local.sRet(0))
+	F.Intrinsic.Control.If(V.Screen.SS_Form1!txtID.Text,<>,"")
+		F.Intrinsic.Control.If(V.Screen.SS_Form1!txtPrefix.Text,<>,"")
+			F.Intrinsic.Control.CallSub(Loadgrid)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtid_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_txtid_click.end
+
+
+program.sub.cmd_txtgl_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtgl_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.sWidths.Declare(String)
+V.Local.sRet.Declare(String)
+
+V.Local.sSql.Set("select GL_ACCOUNT, DESCR from V_GL_MASTER ORDER BY GL_ACCOUNT")
+V.Local.sTitles.Set("Account*!*Description")
+V.Local.sWidths.Set("1500*!*5100")
+
+F.Intrinsic.String.Split(V.Local.sTitles,"*!*",V.Local.sTitles)
+F.Intrinsic.String.Split(V.Local.sWidths,"*!*",V.Local.sWidths)
+F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+F.Intrinsic.UI.Browser("Select GL Account","con",V.Local.sSql,V.Local.sTitles,V.Local.sWidths,5000,8000,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtGL.Text(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtgl_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_txtgl_click.end
+
+
+program.sub.txtprefix_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("txtprefix_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtID.Text,<>,"")
+	F.Intrinsic.Control.If(V.Screen.SS_Form1!txtPrefix.Text,<>,"")
+		F.Intrinsic.Control.CallSub(Loadgrid)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtprefix_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.txtprefix_lostfocus.end
+
+
+program.sub.ss_form1_unload.start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+program.sub.ss_form1_unload.end
+
+
+Program.Sub.BuildGrid.Start
+F.Intrinsic.Control.SetErrorHandler("BuildGrid_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.gsfgGL.Rows(1)
+Gui.SS_Form1.gsfgGL.Rows(2)
+Gui.SS_Form1.gsfgGL.Cols(7)
+Gui.SS_Form1.gsfgGL.FixedRows(1)
+
+Gui.SS_Form1.gsfgGL.TextMatrix(0,0,"Plan ID")
+Gui.SS_Form1.gsfgGL.TextMatrix(1,0,"Prefix")
+Gui.SS_Form1.gsfgGL.TextMatrix(2,0,"Start Date")
+Gui.SS_Form1.gsfgGL.TextMatrix(3,0,"End Date")
+Gui.SS_Form1.gsfgGL.TextMatrix(4,0,"Account")
+
+Gui.SS_Form1.gsfgGL.BuildStyle(1,0,"Format","Alignment",2)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,1,"Format","Alignment",2)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,2,"Format","Alignment",2)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,3,"Format","Alignment",2)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,4,"Format","Alignment",6)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,5,"Format","Alignment",4)
+
+Gui.SS_Form1.gsfgGL.BuildStyle(1,0,"Type","Locked",True)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,1,"Type","Locked",True)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,2,"Type","Locked",True)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,3,"Type","Locked",True)
+Gui.SS_Form1.gsfgGL.BuildStyle(1,4,"Type","Locked",True)
+
+Gui.SS_Form1.gsfgGL.BuildStyle(1,5,"Type","Command","Delete")
+Gui.SS_Form1.gsfgGL.SetColumnPercentages(".175:.175:.175:.175:.2:.105:.0")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("BuildGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.BuildGrid.End
+
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iRows.Declare(Long)
+V.Local.sSql.Declare(String)
+V.Local.iRowOrd.Declare(Long)
+
+F.Intrinsic.Control.CallSub(Buildgrid)
+
+V.Local.iRows.Set(1)
+F.Intrinsic.String.Concat("Select * from GCG_3315__Warranty_GL where Warranty_Plan_ID = '",V.Screen.SS_Form1!txtID.Text,"' and Prefix = '",V.Screen.SS_Form1!txtPrefix.Text,"' Order by Warranty_Plan_ID, Prefix, Start_Date",V.Local.sSql)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	V.Local.iRowOrd.Set(V.Local.iRows)
+	F.Intrinsic.Math.Add(V.Local.iRows,1,V.Local.iRows)
+	Gui.SS_Form1.gsfgGL.Rows(V.Local.iRows)
+	Gui.SS_Form1.gsfgGL.TextMatrix(0,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!Warranty_Plan_ID)
+	Gui.SS_Form1.gsfgGL.TextMatrix(1,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!Prefix)
+	Gui.SS_Form1.gsfgGL.TextMatrix(2,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!Start_Date)
+	Gui.SS_Form1.gsfgGL.TextMatrix(3,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!Stop_Date)
+	Gui.SS_Form1.gsfgGL.TextMatrix(4,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!GL_Account)
+	Gui.SS_Form1.gsfgGL.TextMatrix(6,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!GL_ID)
+	Gui.SS_Form1.gsfgGL.ApplyStyle(V.Local.iRowOrd,1)
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadGrid.End
+
+
+program.sub.txtid_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("txtid_lostfocus_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtID.Text,<>,"")
+	F.Intrinsic.Control.If(V.Screen.SS_Form1!txtPrefix.Text,<>,"")
+		F.Intrinsic.Control.CallSub(Loadgrid)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("txtid_lostfocus_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.txtid_lostfocus.end
+
+
+program.sub.gsfggl_commandclick.start
+F.Intrinsic.Control.SetErrorHandler("gsfggl_commandclick_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRow.Declare(String)
+V.Local.sRowVals.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.iRows.Declare(Long)
+V.Local.iRowOrd.Declare(Long)
+
+Gui.SS_Form1.gsfgGL.ReadRow(V.Args.Key,V.Local.sRow)
+F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowVals)
+F.Intrinsic.String.Concat("Delete GCG_3315__Warranty_GL where GL_ID = ",V.Local.sRowVals(6).Long,V.Local.sSql)
+F.ODBC.Connection!con.Execute(V.Local.sSql)
+V.Local.iRows.Set(V.Screen.SS_Form1!gsfgGL.Rows)
+F.Intrinsic.Control.If(V.Local.iRows,=,2)
+	F.Intrinsic.Control.CallSub(Buildgrid)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Math.Sub(V.Args.Key,1,V.Local.iRowOrd)
+	Gui.SS_Form1.gsfgGL.DeleteRow(V.Local.iRowOrd)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("gsfggl_commandclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.gsfggl_commandclick.end
+
+
+program.sub.cmdsave_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.iGLID.Declare(Long)
+V.Local.dDate.Declare(Date)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtID.Text,=,"")
+	F.Intrinsic.UI.Msgbox("No Warranty Plan ID selected.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtPrefix.Text,=,"")
+	F.Intrinsic.UI.Msgbox("No Warranty Prefix entered.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtGL.Text,=,"")
+	F.Intrinsic.UI.Msgbox("No General Ledger Account selected")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!con.GetID("GCG_3315__Warranty_GL","GL_ID",True,V.Local.iGLID)
+V.Local.sSql.Set("Select * from GCG_3315__Warranty_GL")
+F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSql)
+F.ODBC.con!rst.AddNew
+F.ODBC.con!rst.Set!GL_ID(V.Local.iGLID)
+F.ODBC.con!rst.Set!Warranty_Plan_ID(V.Screen.SS_Form1!txtID.Text)
+F.ODBC.con!rst.Set!Prefix(V.Screen.SS_Form1!txtPrefix.Text)
+V.Local.dDate.Set(V.Screen.SS_Form1!dtpStart.Value)
+F.ODBC.con!rst.Set!Start_Date(V.Local.dDate.PervasiveDate)
+V.Local.dDate.Set(V.Screen.SS_Form1!dtpStop.Value)
+F.ODBC.con!rst.Set!Stop_Date(V.Local.dDate.PervasiveDate)
+F.ODBC.con!rst.Set!GL_Account(V.Screen.SS_Form1!txtGL.Text)
+F.ODBC.con!rst.Update
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.CallSub(Buildgrid)
+F.Intrinsic.Control.CallSub(Loadgrid)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_GL.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdsave_click.end
+
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Warranty_GL$}$MITCH$}$1/18/2013
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$ECP
+
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Warranty GL Maintenance
+SS_Form1.CTRL{{NAME::txtID\\TYPE::2\\CAPTION::Warranty Plan ID\\GROUP::-1\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::txtPrefix\\TYPE::2\\CAPTION::Warranty Prefix\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::dtpStart\\TYPE::6\\CAPTION::Start Date\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::dtpStop\\TYPE::6\\CAPTION::Stop Date\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtGL\\TYPE::2\\CAPTION::GL Account\\GROUP::-1\\BROWSER::1\\SIZE::1
+SS_Form1.CTRL{{NAME::cmdSave\\TYPE::5\\CAPTION::Save\\GROUP::-1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
