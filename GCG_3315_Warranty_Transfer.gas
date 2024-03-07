@@ -1,0 +1,549 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Transfer Warranty")
+gui.SS_Form1..size(7725,11265)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(False,False,False,False,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_dtpPurchase.create(label,"Purchase Date",True,1800,200,1,3770,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpPurchase.create(datepicker)
+gui.SS_Form1.dtpPurchase.visible(True)
+gui.SS_Form1.dtpPurchase.size(2715,345)
+gui.SS_Form1.dtpPurchase.zorder(0)
+gui.SS_Form1.dtpPurchase.position(3775,955)
+gui.SS_Form1.dtpPurchase.enabled(True)
+gui.SS_Form1.dtpPurchase.checkbox(False)
+gui.SS_Form1.lbl_txtOrderNo.create(label,"Order",True,1800,200,1,100,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtOrderNo.create(textbox,"",True,1800,330,0,100,965,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtOrderLn.create(label,"Line",True,1800,200,1,1985,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtOrderLn.create(textbox,"",True,1725,330,0,1985,965,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtPartNo.create(label,"Part",True,1800,200,1,100,1465,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPartNo.create(textbox,"",True,3600,330,0,100,1665,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtWarrantyID.create(label,"Warranty",True,1800,200,1,3785,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtWarrantyID.create(textbox,"",True,3600,330,0,3785,335,False,0,Arial,8,16777215,1)
+gui.SS_Form1.txtWarrantyID.maxLength(50)
+gui.SS_Form1.cmdBrowser.create(button)
+gui.SS_Form1.cmdBrowser.caption("^")
+gui.SS_Form1.cmdBrowser.visible(True)
+gui.SS_Form1.cmdBrowser.size(330,330)
+gui.SS_Form1.cmdBrowser.zorder(0)
+gui.SS_Form1.cmdBrowser.position(3280,315)
+gui.SS_Form1.cmdBrowser.enabled(True)
+gui.SS_Form1.cmdBrowser.fontname("Arial")
+gui.SS_Form1.cmdBrowser.fontsize(8)
+gui.SS_Form1.cmdBrowser.event(click,cmdbrowser_click)
+gui.SS_Form1.lbl_txtNameF.create(label,"First Name",True,1800,200,1,100,2165,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtNameF.create(textbox,"",True,3600,330,0,100,2365,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtNameF.maxLength(20)
+gui.SS_Form1.lbl_txtNameL.create(label,"Last Name",True,1800,200,1,3785,2165,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtNameL.create(textbox,"",True,3600,330,0,3785,2365,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtNameL.maxLength(20)
+gui.SS_Form1.lbl_txtAddress1.create(label,"Address1",True,1800,200,1,100,2865,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtAddress1.create(textbox,"",True,3600,330,0,100,3065,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtAddress1.maxLength(30)
+gui.SS_Form1.lbl_txtAddress2.create(label,"Address2",True,1800,200,1,3785,2865,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtAddress2.create(textbox,"",True,3600,330,0,3785,3065,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtAddress2.maxLength(30)
+gui.SS_Form1.lbl_txtCity.create(label,"City",True,1800,200,1,100,3565,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtCity.create(textbox,"",True,3600,330,0,100,3765,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtCity.maxLength(15)
+gui.SS_Form1.lbl_txtState.create(label,"State",True,1800,200,1,3785,3565,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtState.create(textbox,"",True,1725,330,0,3785,3765,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtState.maxLength(2)
+gui.SS_Form1.lbl_txtZip.create(label,"Zip Code",True,1800,200,1,5580,3565,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtZip.create(textbox,"",True,1800,330,0,5580,3765,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtZip.maxLength(13)
+gui.SS_Form1.lbl_txtPhoneH.create(label,"Home Phone",True,1800,200,1,100,4265,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPhoneH.create(textbox,"",True,3600,330,0,100,4465,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtPhoneH.maxLength(10)
+gui.SS_Form1.lbl_txtPhoneW.create(label,"Work Phone",True,1800,200,1,3785,4265,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPhoneW.create(textbox,"",True,3600,330,0,3785,4465,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtPhoneW.maxLength(10)
+gui.SS_Form1.cmdSave.create(button)
+gui.SS_Form1.cmdSave.caption("Save")
+gui.SS_Form1.cmdSave.visible(True)
+gui.SS_Form1.cmdSave.size(1000,360)
+gui.SS_Form1.cmdSave.zorder(0)
+gui.SS_Form1.cmdSave.position(100,10200)
+gui.SS_Form1.cmdSave.enabled(True)
+gui.SS_Form1.cmdSave.fontname("Arial")
+gui.SS_Form1.cmdSave.fontsize(8)
+gui.SS_Form1.cmdSave.event(click,cmdsave_click)
+gui.SS_Form1.txtSerial.create(textbox,"",True,3165,300,0,100,335,False,0,Arial,8,-2147483643,1)
+gui.SS_Form1.lblSerial.create(label,"Serial",True,1935,255,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.gsflexgrid1.create(gsflexgrid)
+gui.SS_Form1.gsflexgrid1.FixedRows(0)
+gui.SS_Form1.gsflexgrid1.FixedCols(0)
+gui.SS_Form1.gsflexgrid1.visible(True)
+gui.SS_Form1.gsflexgrid1.size(7290,4935)
+gui.SS_Form1.gsflexgrid1.zorder(0)
+gui.SS_Form1.gsflexgrid1.position(100,5100)
+gui.SS_Form1.gsflexgrid1.enabled(True)
+gui.SS_Form1.lblPrefix.create(label,"Prefix",True,1935,255,1,3815,1465,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPrefix.create(textbox,"",True,3600,330,0,3800,1665,True,0,Arial,8,-2147483643,1)
+gui.SS_Form1.dtpPurchase.tabstop(True)
+gui.SS_Form1.dtpPurchase.tabindex(1)
+gui.SS_Form1.cmdBrowser.tabstop(True)
+gui.SS_Form1.cmdBrowser.tabindex(2)
+gui.SS_Form1.txtNameF.tabstop(True)
+gui.SS_Form1.txtNameF.tabindex(3)
+gui.SS_Form1.txtNameL.tabstop(True)
+gui.SS_Form1.txtNameL.tabindex(4)
+gui.SS_Form1.txtAddress1.tabstop(True)
+gui.SS_Form1.txtAddress1.tabindex(5)
+gui.SS_Form1.txtAddress2.tabstop(True)
+gui.SS_Form1.txtAddress2.tabindex(6)
+gui.SS_Form1.txtCity.tabstop(True)
+gui.SS_Form1.txtCity.tabindex(7)
+gui.SS_Form1.txtState.tabstop(True)
+gui.SS_Form1.txtState.tabindex(8)
+gui.SS_Form1.txtZip.tabstop(True)
+gui.SS_Form1.txtZip.tabindex(9)
+gui.SS_Form1.txtPhoneH.tabstop(True)
+gui.SS_Form1.txtPhoneH.tabindex(10)
+gui.SS_Form1.txtPhoneW.tabstop(True)
+gui.SS_Form1.txtPhoneW.tabindex(11)
+gui.SS_Form1.cmdSave.tabstop(True)
+gui.SS_Form1.cmdSave.tabindex(15)
+
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+
+Program.Sub.Main.Start
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Flexbuild)
+F.Intrinsic.Control.CallSub(Flexstyle)
+Gui.SS_Form1..Show
+
+Program.Sub.Main.End
+
+
+program.sub.cmdbrowser_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtwarranty_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sCol.Declare(String)
+V.Local.sColW.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iMsg.Declare(Long)
+
+V.Local.sSQL.Set("Select Serial,Warranty_Plan_Id,Prefix,Order_no,Order_line,Part FROM GCG_3315__WARRANTY_GEN Order by SERIAL")
+F.Intrinsic.String.Split("Serial Number*!*Warranty ID*!*Prefix*!*Order*!*Line*!*Part","*!*",V.Local.sCol)
+F.Intrinsic.String.Split("2000*!*3000*!*600*!*1000*!*500*!*2500","*!*",V.Local.sColW)
+F.Intrinsic.UI.Browser("Select a Serial Number","CON",V.Local.sSQL,V.Local.sCol,V.Local.sColW,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtSerial.Text(V.Local.sRet(0))
+	F.Intrinsic.UI.Msgbox("Continue the transfer of warranty information?","Transfer Warranty",4,V.Local.iMsg)
+	F.Intrinsic.Control.If(V.Local.iMsg,=,7)
+		Gui.SS_Form1.txtSerial.Text("")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.CallSub(History)
+		Gui.SS_Form1.txtSerial.Text(V.Local.sRet(0))
+		Gui.SS_Form1.txtWarrantyID.Text(V.Local.sRet(1))
+		Gui.SS_Form1.txtPrefix.Text(V.Local.sRet(2))
+		Gui.SS_Form1.txtOrderNo.Text(V.Local.sRet(3))
+		Gui.SS_Form1.txtOrderLn.Text(V.Local.sRet(4))
+		Gui.SS_Form1.txtPartNo.Text(V.Local.sRet(5))
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.CallSub(Populate,"Warranty",V.Local.sRet(1),"Serial",V.Local.sRet(0))
+Function.Intrinsic.Control.If(Variable.Screen.SS_Form1.Height,<,1320)
+	Gui.SS_Form1..Size(7725,11200)
+Function.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtwarranty_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Edit_Flex.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+
+
+program.sub.cmdbrowser_click.end
+
+
+program.sub.cmdsave_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.iRow.Declare(Long)
+V.Local.i.Declare(Long)
+V.Local.sRow.Declare(String)
+V.Local.sRowArray.Declare(String)
+V.Local.sSerial.Declare(String)
+
+V.Local.sSerial.Set(V.Screen.SS_Form1!txtSerial.Text)
+F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_GEN Where SERIAL = '",V.Local.sSerial.Trim,"'",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	F.ODBC.con!rst.Set!PURCHASE_DATE(V.Screen.SS_Form1!dtpPurchase.Value)
+	F.ODBC.con!rst.Set!FIRSTNAME(V.Screen.SS_Form1!txtNameF.Text)
+	F.ODBC.con!rst.Set!LASTNAME(V.Screen.SS_Form1!txtNameL.Text)
+	F.ODBC.con!rst.Set!ADDRESS1(V.Screen.SS_Form1!txtAddress1.Text)
+	F.ODBC.con!rst.Set!ADDRESS2(V.Screen.SS_Form1!txtAddress2.Text)
+	F.ODBC.con!rst.Set!CITY(V.Screen.SS_Form1!txtCity.Text)
+	F.ODBC.con!rst.Set!STATE(V.Screen.SS_Form1!txtState.Text)
+	F.ODBC.con!rst.Set!ZIP(V.Screen.SS_Form1!txtZip.Text)
+	F.ODBC.con!rst.Set!PHONE(V.Screen.SS_Form1!txtPhoneH.Text)
+	F.ODBC.con!rst.Set!WORK_PHONE(V.Screen.SS_Form1!txtPhoneW.Text)
+	F.ODBC.con!rst.Set!PREFIX(V.Screen.SS_Form1!txtPrefix.Text)
+	F.ODBC.con!rst.Update
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+'F.Intrinsic.Debug.InvokeDebugger
+'F.Intrinsic.Debug.Stop
+
+Gui.SS_Form1.gsflexgrid1.Commit
+F.Intrinsic.Math.Sub(V.Screen.SS_Form1!gsflexgrid1.Rows,1,V.Local.iRow)
+F.Intrinsic.Control.For(V.Local.i,1,V.Local.iRow,1)
+	Gui.SS_Form1.gsflexgrid1.ReadRow(V.Local.i,V.Local.sRow)
+	F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowArray)
+	'User Fields 1- 25
+	F.Intrinsic.Control.If(V.Local.sRowArray(0),<=,25)
+		F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER25 Where SERIAL = '",V.Local.sSerial.Trim,"'",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+			F.ODBC.con!rst.AddNew
+			F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+			F.ODBC.con!rst.Set!USER[V.Local.sRowArray(0)](V.Local.sRowArray(2))
+		F.Intrinsic.Control.Else
+			F.ODBC.con!rst.Set!USER[V.Local.sRowArray(0)](V.Local.sRowArray(2))
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Update
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.EndIf
+	'User Fields 26- 50
+	F.Intrinsic.Control.If(V.Local.sRowArray(0),>,25)
+		F.Intrinsic.Control.If(V.Local.sRowArray(0),<=,50)
+			F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER50 Where SERIAL = '",V.Local.sSerial.Trim,"'",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+				F.ODBC.con!rst.AddNew
+				F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+				F.ODBC.con!rst.Set!USER[V.Local.sRowArray(0)](V.Local.sRowArray(2))
+			F.Intrinsic.Control.Else
+				F.ODBC.con!rst.Set!USER[V.Local.sRowArray(0)](V.Local.sRowArray(2))
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rst.Update
+			F.ODBC.con!rst.Close
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	'User Fields 51- 75
+	F.Intrinsic.Control.If(V.Local.sRowArray(0),>,51)
+		F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER75 Where SERIAL = '",V.Local.sSerial.Trim,"'",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+			F.ODBC.con!rst.AddNew
+			F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+			F.ODBC.con!rst.Set!USER[V.Local.sRowArray(0)](V.Local.sRowArray(2))
+		F.Intrinsic.Control.Else
+			F.ODBC.con!rst.Set!USER[V.Local.sRowArray(0)](V.Local.sRowArray(2))
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Update
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.CallSub(Populate,"Warranty",V.Screen.SS_Form1!txtWarrantyID.Text,"Serial",V.Local.sSerial)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Transfer.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdsave_click.end
+
+
+program.sub.ss_form1_unload.start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+
+program.sub.ss_form1_unload.end
+
+
+Program.Sub.FlexBuild.Start
+F.Intrinsic.Control.SetErrorHandler("FlexBuild_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.gsflexgrid1.Rows(2)
+Gui.SS_Form1.gsflexgrid1.Cols(3)
+Gui.SS_Form1.gsflexgrid1.TextMatrix(0,0,"ID")
+Gui.SS_Form1.gsflexgrid1.ColWidth(0,0)
+Gui.SS_Form1.gsflexgrid1.TextMatrix(1,0,"Fields")
+Gui.SS_Form1.gsflexgrid1.ColWidth(1,3000)
+Gui.SS_Form1.gsflexgrid1.TextMatrix(2,0,"")
+Gui.SS_Form1.gsflexgrid1.ColWidth(2,3900)
+Gui.SS_Form1.gsflexgrid1.FixedRows(1)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("FlexBuild_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Transfer.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.FlexBuild.End
+
+
+Program.Sub.FlexStyle.Start
+F.Intrinsic.Control.SetErrorHandler("FlexStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iC.Declare(Long)
+
+F.Intrinsic.Control.For(V.Local.iC,1,1,1)
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Type","Locked","True")
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Color","Back",V.Color.LtGray)
+F.Intrinsic.Control.Next(V.Local.iC)
+
+F.Intrinsic.Control.For(V.Local.iC,1,2,1)
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Format","Alignment","2")
+F.Intrinsic.Control.Next(V.Local.iC)
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("FlexStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Transfer.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.FlexStyle.End
+
+
+Program.Sub.Populate.Start
+V.Local.sSQL.Declare(String)
+V.Local.iRow.Declare(Long)
+V.Local.iR.Declare(Long)
+V.Local.sQuery.Declare(String)
+V.Local.sWarranty.Declare(String)
+V.Local.sSerial.Declare(String)
+V.Local.sID.Declare(String)
+
+V.Local.sWarranty.Set(V.Args.Warranty)
+V.Local.sSerial.Set(V.Args.Serial)
+
+F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_GEN Where Warranty_PLAN_ID = '",V.Local.sWarranty.Trim,"'",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	Gui.SS_Form1.dtpPurchase.Value(V.ODBC.con!rst.FieldVal!PURCHASE_DATE)
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.CallSub(Flexbuild)
+V.Local.iR.Set(1)
+Gui.SS_Form1.gsflexgrid1.Visible(False)
+
+V.Local.sSQL.Set("SELECT * FROM GCG_3315__WARRANTY_GEN LEFT OUTER JOIN GCG_3315__WARRANTY_USER25 ON GCG_3315__WARRANTY_GEN.SERIAL = GCG_3315__WARRANTY_USER25.SERIAL")
+F.Intrinsic.String.Concat(V.Local.sSQL," LEFT OUTER JOIN GCG_3315__WARRANTY_USER50 ON GCG_3315__WARRANTY_GEN.SERIAL = GCG_3315__WARRANTY_USER50.SERIAL",V.Local.sSQL)
+F.Intrinsic.String.Concat(V.Local.sSQL," LEFT OUTER JOIN GCG_3315__WARRANTY_USER75 ON GCG_3315__WARRANTY_GEN.SERIAL =GCG_3315__WARRANTY_USER75.SERIAL WHERE GCG_3315__WARRANTY_GEN.SERIAL = '",V.Local.sSerial.Trim,"'",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	F.Intrinsic.String.Concat("Select * FROM GCG_3315__PLANID_USRFLD Where Plan_ID = '",V.Local.sWarranty.Trim,"' and USED = '1' Order By ID",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRO("rstLabel",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.con!rstLabel.EOF,=,False)
+		F.Intrinsic.Control.DoUntil(V.ODBC.con!rstLabel.EOF,=,True)
+			F.Intrinsic.Math.Add(V.Local.iR,1,V.Local.iR)
+			F.Intrinsic.Math.Sub(V.Local.iR,1,V.Local.iRow)
+			Gui.SS_Form1.gsflexgrid1.Rows(V.Local.iR)
+			V.Local.sID.Set(V.ODBC.con!rstLabel.FieldValTrim!ID)
+			Gui.SS_Form1.gsflexgrid1.TextMatrix(0,V.Local.iRow,V.Local.sID.Trim)
+			Gui.SS_Form1.gsflexgrid1.TextMatrix(1,V.Local.iRow,V.ODBC.con!rstLabel.FieldValTrim!NAME)
+			Gui.SS_Form1.gsflexgrid1.TextMatrix(2,V.Local.iRow,V.ODBC.con!rst.FieldValTrim!USER[v.local.sID])
+			Gui.SS_Form1.gsflexgrid1.ApplyStyle(V.Local.iRow,1)
+			F.ODBC.con!rstLabel.MoveNext
+		F.Intrinsic.Control.Loop
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rstLabel.Close
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+Gui.SS_Form1.gsflexgrid1.Visible(True)
+
+Program.Sub.Populate.End
+
+
+Program.Sub.History.Start
+F.Intrinsic.Control.SetErrorHandler("History_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.iRow.Declare(Long)
+V.Local.i.Declare(Long)
+V.Local.sRow.Declare(String)
+V.Local.sRowArray.Declare(String)
+V.Local.sSerial.Declare(String)
+V.Local.iID.Declare(Long)
+V.Local.sWarranty.Declare(String)
+V.Local.sID.Declare(String)
+
+
+V.Local.sSerial.Set(V.Screen.SS_Form1!txtSerial.Text)
+F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_GEN Where SERIAL = '",V.Local.sSerial.Trim,"'",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	V.Local.sWarranty.Set(V.ODBC.con!rst.FieldValTrim!WARRANTY_PLAN_ID)
+	F.Intrinsic.String.Concat("Select * From GCG_3315__GEN_HIST Where ID = '",V.Local.iID,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRW("rstA",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.con!rstA.EOF,=,True)
+		F.ODBC.con!rstA.AddNew
+		F.ODBC.con!rstA.Set!SERIAL(V.ODBC.con!rst.FieldValTrim!SERIAL)
+		F.ODBC.con!rstA.Set!ORDER_NO(V.ODBC.con!rst.FieldValTrim!ORDER_NO)
+		F.ODBC.con!rstA.Set!ORDER_LINE(V.ODBC.con!rst.FieldValTrim!ORDER_LINE)
+		F.ODBC.con!rstA.Set!PART(V.ODBC.con!rst.FieldValTrim!PART)
+		F.ODBC.con!rstA.Set!WARRANTY_PLAN_ID(V.Local.sWarranty.Trim)
+		F.ODBC.con!rstA.Set!PURCHASE_DATE(V.ODBC.con!rst.FieldValPervasiveDate!PURCHASE_DATE)
+		F.ODBC.con!rstA.Set!FIRSTNAME(V.ODBC.con!rst.FieldValTrim!FIRSTNAME)
+		F.ODBC.con!rstA.Set!LASTNAME(V.ODBC.con!rst.FieldValTrim!LASTNAME)
+		F.ODBC.con!rstA.Set!ADDRESS1(V.ODBC.con!rst.FieldValTrim!ADDRESS1)
+		F.ODBC.con!rstA.Set!ADDRESS2(V.ODBC.con!rst.FieldValTrim!ADDRESS2)
+		F.ODBC.con!rstA.Set!CITY(V.ODBC.con!rst.FieldValTrim!CITY)
+		F.ODBC.con!rstA.Set!STATE(V.ODBC.con!rst.FieldValTrim!STATE)
+		F.ODBC.con!rstA.Set!ZIP(V.ODBC.con!rst.FieldValTrim!ZIP)
+		F.ODBC.con!rstA.Set!PHONE(V.ODBC.con!rst.FieldValTrim!PHONE)
+		F.ODBC.con!rstA.Set!WORK_PHONE(V.ODBC.con!rst.FieldValTrim!WORK_PHONE)
+		F.ODBC.con!rstA.Set!PREFIX(V.ODBC.con!rst.FieldValTrim!PREFIX)
+		F.ODBC.con!rstA.Update
+		V.Local.iID.Set(V.ODBC.con!rstA.FieldValTrim!ID)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rstA.Close
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+
+'F.Intrinsic.String.Concat("Select * From GCG_3315__PLANID_USRFLD Where PLAN_ID = '",V.Local.sWarranty.Trim,"' and TRACK= '1' and USED = '1'","",V.Local.sSQL)
+F.Intrinsic.String.Concat("Select * From GCG_3315__PLANID_USRFLD Where PLAN_ID = '",V.Local.sWarranty.Trim,"' and TRACK= '1'","",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,<>,True)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+		V.Local.sID.Set(V.ODBC.con!rst.FieldValTrim!ID)
+		F.Intrinsic.Control.If(V.Local.sID,<=,25)
+			F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER25 where SERIAL = '",V.Local.sSerial.Trim,,"'",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstA",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstA.EOF,=,False)
+				F.Intrinsic.String.Concat("Select * FROM GCG_3315__USER25_HIST Where ID = '",V.Local.iID.Trim,"'",V.Local.sSQL)
+				F.ODBC.Connection!con.OpenRecordsetRW("rstB",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.con!rstB.EOF,=,True)
+					F.ODBC.con!rstB.AddNew
+					F.ODBC.con!rstB.Set!ID(V.Local.iID)
+					F.ODBC.con!rstB.Set!SERIAL(V.Local.sSerial.Trim)
+					F.ODBC.con!rstB.Set!USER[v.local.sID](V.ODBC.con!rstA.FieldValTrim!USER[v.local.sID])
+				F.Intrinsic.Control.Else
+					F.ODBC.con!rstB.Set!USER[v.local.sID](V.ODBC.con!rstA.FieldValTrim!USER[v.local.sID])
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstB.Update
+				F.ODBC.con!rstB.Close
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstA.Close
+		F.Intrinsic.Control.EndIf
+'====================
+		F.Intrinsic.Control.If(V.Local.sID,>,25)
+			F.Intrinsic.Control.If(V.Local.sID,<=,50)
+				F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER50 where SERIAL = '",V.Local.sSerial.Trim,,"'",V.Local.sSQL)
+				F.ODBC.Connection!con.OpenRecordsetRO("rstA",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.con!rstA.EOF,=,False)
+					F.Intrinsic.String.Concat("Select * FROM GCG_3315__USER50_HIST Where ID = '",V.Local.iID.Trim,"'",V.Local.sSQL)
+					F.ODBC.Connection!con.OpenRecordsetRW("rstB",V.Local.sSQL)
+					F.Intrinsic.Control.If(V.ODBC.con!rstB.EOF,=,True)
+						F.ODBC.con!rstB.AddNew
+						F.ODBC.con!rstB.Set!ID(V.Local.iID)
+						F.ODBC.con!rstB.Set!SERIAL(V.Local.sSerial.Trim)
+						F.ODBC.con!rstB.Set!USER[v.local.sID](V.ODBC.con!rstA.FieldValTrim!USER[v.local.sID])
+					F.Intrinsic.Control.Else
+						F.ODBC.con!rstB.Set!USER[v.local.sID](V.ODBC.con!rstA.FieldValTrim!USER[v.local.sID])
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rstB.Update
+					F.ODBC.con!rstB.Close
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstA.Close
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+'=========================
+		F.Intrinsic.Control.If(V.Local.sID,>,51)
+			F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER75 where SERIAL = '",V.Local.sSerial.Trim,,"'",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRO("rstA",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstA.EOF,=,False)
+				F.Intrinsic.String.Concat("Select * FROM GCG_3315__USER75_HIST Where ID = '",V.Local.iID.Trim,"'",V.Local.sSQL)
+				F.ODBC.Connection!con.OpenRecordsetRW("rstB",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.con!rstB.EOF,=,True)
+					F.ODBC.con!rstB.AddNew
+					F.ODBC.con!rstB.Set!ID(V.Local.iID)
+					F.ODBC.con!rstB.Set!SERIAL(V.Local.sSerial.Trim)
+					F.ODBC.con!rstB.Set!USER[v.local.sID](V.ODBC.con!rstA.FieldValTrim!USER[v.local.sID])
+				F.Intrinsic.Control.Else
+					F.ODBC.con!rstB.Set!USER[v.local.sID](V.ODBC.con!rstA.FieldValTrim!USER[v.local.sID])
+				F.Intrinsic.Control.EndIf
+				F.ODBC.con!rstB.Update
+				F.ODBC.con!rstB.Close
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstA.Close
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.MoveNext
+	F.Intrinsic.Control.Loop
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("History_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Transfer.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.Debug.SetLA(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.History.End
+
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Warranty_Transfer$}$ERIC$}$12/6/2012
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$ECP
+Program.Sub.Comments.End
+
