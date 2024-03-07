@@ -1,0 +1,58 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Payupdate)
+
+Program.Sub.Main.End
+
+Program.Sub.PayUpdate.Start
+F.Intrinsic.Control.SetErrorHandler("PayUpdate_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+
+F.Intrinsic.String.Concat("Select * From GCG_3315_Warranty_Pay where AP_Invoice = '",V.Passed.Invoice.Trim,"' and Vendor_ID = '",V.Passed.Vendor.Trim,"'",V.Local.sSql)
+F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	F.ODBC.con!rst.Set!Check_Number(V.Passed.Check-Number.Trim)
+	F.Intrinsic.Control.If(V.Passed.VOID-FLAG,=,"")
+		F.ODBC.con!rst.Set!Void(0)
+	F.Intrinsic.Control.Else
+		F.ODBC.con!rst.Set!Void(1)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Update
+F.Intrinsic.Control.EndIf
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PayUpdate_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Payment_Update.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.PayUpdate.End
+
+Program.Sub.Unload.Start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+Program.Sub.Unload.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Warranty_Payment_Update$}$MLA$}$1/7/2013
+${$1$}$$}$$}$0$}$41001$}$Check Printed$}$1/8/2013 10:55:01 AM$}$(Program: AP0270; Screen: )
+
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$ECP
+Program.Sub.Comments.End
+
