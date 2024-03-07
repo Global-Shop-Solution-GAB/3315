@@ -1,0 +1,242 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Claim Type Maintenance")
+gui.SS_Form1..size(4050,2340)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,Unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_txtID.create(label,"Claim Type ID",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtID.create(textbox,"",True,2700,330,0,100,335,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtID.numericonly(2)
+gui.SS_Form1.txtID.event(lostfocus,txtid_lostfocus)
+gui.SS_Form1.cmd_txtID.create(button)
+gui.SS_Form1.cmd_txtID.caption("^")
+gui.SS_Form1.cmd_txtID.visible(True)
+gui.SS_Form1.cmd_txtID.size(330,330)
+gui.SS_Form1.cmd_txtID.zorder(0)
+gui.SS_Form1.cmd_txtID.position(2885,335)
+gui.SS_Form1.cmd_txtID.enabled(True)
+gui.SS_Form1.cmd_txtID.fontname("Arial")
+gui.SS_Form1.cmd_txtID.fontsize(8)
+gui.SS_Form1.cmd_txtID.event(click,cmd_txtid_click)
+gui.SS_Form1.lbl_txtDescription.create(label,"Claim Type Description",True,1800,200,1,100,750,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtDescription.create(textbox,"",True,3600,330,0,100,950,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtDescription.maxLength(30)
+gui.SS_Form1.cmdSave.create(button)
+gui.SS_Form1.cmdSave.caption("Save")
+gui.SS_Form1.cmdSave.visible(True)
+gui.SS_Form1.cmdSave.size(1000,360)
+gui.SS_Form1.cmdSave.zorder(0)
+gui.SS_Form1.cmdSave.position(100,1365)
+gui.SS_Form1.cmdSave.enabled(True)
+gui.SS_Form1.cmdSave.fontname("Arial")
+gui.SS_Form1.cmdSave.fontsize(8)
+gui.SS_Form1.cmdSave.event(click,cmdSave)
+gui.SS_Form1.cmdDelete.create(button)
+gui.SS_Form1.cmdDelete.caption("Delete")
+gui.SS_Form1.cmdDelete.visible(True)
+gui.SS_Form1.cmdDelete.size(1000,360)
+gui.SS_Form1.cmdDelete.zorder(0)
+gui.SS_Form1.cmdDelete.position(1185,1365)
+gui.SS_Form1.cmdDelete.enabled(True)
+gui.SS_Form1.cmdDelete.fontname("Arial")
+gui.SS_Form1.cmdDelete.fontsize(8)
+gui.SS_Form1.cmdDelete.event(click,cmdDelete)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'Quote 4353
+'coded by TRT
+'12/21/12 oetw
+'for ECP Inc.
+'this will be used in conjuntion with quote 3849
+
+'Maintenance program that will manage the claim types that are going to be used in the
+'claim entry program found in quote 3849.
+
+
+'open connection
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+
+'show the form
+Gui.SS_Form1..Show
+Gui.SS_Form1.txtID.SetFocus
+
+
+Program.Sub.Main.End
+
+Program.Sub.cmdSave.Start
+'subroutine that will save the information to the table or either write new.
+
+V.Local.sSQL.Declare(String)
+V.Local.sClaimType.Declare(String)
+V.Local.sDesc.Declare(String)
+
+V.Local.sClaimType.Set(V.Screen.SS_Form1!txtID.Text)
+V.Local.sDesc.Set(V.Screen.SS_Form1!txtDescription.Text)
+
+F.Intrinsic.Control.If(V.local.sclaimtype.trim,=,"")
+	F.Intrinsic.UI.Msgbox("Please fill in all fields before saving.","Error in Save")
+	F.Intrinsic.Control.Exitsub
+F.Intrinsic.Control.ElseIf(V.Local.sDesc.Trim,=,"")
+	F.Intrinsic.UI.Msgbox("Please fill in all fields before saving.","Error in Save")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Concat("Select * From GCG_3315_Claim_Types Where Claim_Type_ID = '",V.Screen.SS_Form1!txtID.Text,"'",V.Local.sSQL)
+
+F.ODBC.Connection!conx.OpenRecordsetRW("rst",V.Local.sSQL)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,True)
+	F.ODBC.conx!rst.AddNew
+F.Intrinsic.Control.EndIf
+'update the records
+F.ODBC.conx!rst.Set!Claim_Type_ID(V.Screen.SS_Form1!txtID.Text)
+F.ODBC.conx!rst.Set!Claim_Type_Desc(V.Screen.SS_Form1!txtDescription.Text)
+F.ODBC.conx!rst.Update
+F.ODBC.conx!rst.Close
+
+'disable form when saving
+Gui.SS_Form1..Enabled(False)
+'clear screen and set focus back to text id
+Gui.SS_Form1.txtID.Text("")
+Gui.SS_Form1.txtDescription.Text("")
+Gui.SS_Form1..Enabled(True)
+Gui.SS_Form1.txtId.SetFocus
+
+Program.Sub.cmdSave.End
+
+Program.Sub.Unload.Start
+'close connection and end program
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+Program.Sub.Unload.End
+
+Program.Sub.cmdDelete.Start
+'this subroutine will delete the respective claim type id and description from the table
+
+
+V.Local.sSQL.Declare(String)
+
+'make sure an ID has been chosen
+F.Intrinsic.Control.If(V.screen.SS_Form1!txtID.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Please select a Claim Type for Deletion.","Error")
+	F.Intrinsic.Control.Exitsub
+F.Intrinsic.Control.EndIf
+
+'before we can delete the claim type, we need to make sure that no claim type is associated with any
+'one chose claim id, otherwise it will cause error in the claim entry
+F.Intrinsic.String.Concat("Select Claim_Type From GCG_3315_Warranty_Claim Where Claim_Type = '",V.Screen.SS_Form1!txtID.Text,"'",V.Local.sSQL)
+F.ODBC.Connection!conx.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,True)
+	F.ODBC.conx!rst.Close
+	'Claim type is not found so we can allow the deletion
+	F.Intrinsic.String.Concat("Select * From GCG_3315_Claim_Types Where Claim_Type_ID = '",V.Screen.SS_Form1!txtID.Text,"'",V.Local.sSQL)
+	F.ODBC.Connection!conx.OpenRecordsetRW("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,True)
+		F.ODBC.conx!rst.close
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Concat("Delete from GCG_3315_Claim_Types Where Claim_Type_ID = '",V.Screen.SS_Form1!txtID.Text,"'",V.Local.sSQL)
+		F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	 	F.Intrinsic.UI.Msgbox("Claim Type Deleted","Delete")
+		Gui.SS_Form1.txtID.Text("")
+		Gui.SS_Form1.txtDescription.Text("")
+		Gui.SS_Form1.txtID.SetFocus
+		F.ODBC.conx!rst.Close
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	'meaning that a record was found, and we cant delete it
+	F.Intrinsic.UI.Msgbox("Claim Type is associated with a claim and cannot be deleted.","Delete Failed")
+	F.ODBC.conx!rst.Close
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+
+
+
+Program.Sub.cmdDelete.End
+
+program.sub.cmd_txtid_click.start
+'create a browser
+
+V.Local.sTitles.Declare(String)
+V.Local.iWidths.Declare(Long)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.String.Split("Claim Type ID*!* Desc","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("1750*!*3000","*!*",V.Local.iWidths)
+
+F.Intrinsic.UI.MiniBrowser("Claim Types","conx","Select * From GCG_3315_Claim_Types",V.Local.sTitles,V.Local.iWidths,V.Local.sRet)
+
+
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtID.Text(V.Local.sRet(0))
+	Gui.SS_Form1.txtDescription.Text(V.Local.sRet(1))
+F.Intrinsic.Control.EndIf
+
+program.sub.cmd_txtid_click.end
+
+program.sub.txtid_lostfocus.start
+'this will populate the two fields with the information
+'from the GCG_3315_Claim_Types table
+
+V.Local.sSQL.Declare(String)
+
+F.Intrinsic.Control.If(V.screen.SS_Form1!txtID.Text,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.String.concat("Select * From GCG_3315_Claim_Types Where Claim_Type_ID = '",V.Screen.SS_Form1!txtID.Text,"'",V.Local.sSQL)
+F.ODBC.Connection!conx.OpenRecordsetRO("rst",V.Local.sSQL)
+
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,True)
+	Gui.SS_Form1.txtDescription.Text("")
+	F.ODBC.conx!rst.Close
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'pull in information and show on screen
+	Gui.SS_Form1.txtID.Text(V.ODBC.conx!rst.FieldValTrim!Claim_Type_ID)
+	Gui.SS_Form1.txtDescription.Text(V.ODBC.conx!rst.FieldValTrim!Claim_Type_Desc)
+	F.ODBC.conx!rst.Close
+F.Intrinsic.Control.EndIf
+
+program.sub.txtid_lostfocus.end
+
+Program.Sub.Comments.Start
+${$0$}$GCG_CLAIM_TYPE_MAINT$}$SUPERVSR$}$12/21/2012
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Claim Type Maintenance
+SS_Form1.CTRL{{NAME::txtID\\TYPE::2\\CAPTION::Claim Type ID\\GROUP::-1\\BROWSER::1\\SIZE::1.5
+SS_Form1.CTRL{{NAME::txtDescription\\TYPE::2\\CAPTION::Claim Type Description\\GROUP::-1\\BROWSER::0\\SIZE::2
+SS_Form1.CTRL{{NAME::cmdSave\\TYPE::5\\CAPTION::Save\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmdDelete\\TYPE::5\\CAPTION::Delete\\GROUP::1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
