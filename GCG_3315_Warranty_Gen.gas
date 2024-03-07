@@ -1,0 +1,1375 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Generate Warranty")
+gui.SS_Form1..size(7820,8940)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,Unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_dtpPurchase.create(label,"Purchase Date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpPurchase.create(datepicker)
+gui.SS_Form1.dtpPurchase.visible(True)
+gui.SS_Form1.dtpPurchase.size(1800,345)
+gui.SS_Form1.dtpPurchase.zorder(0)
+gui.SS_Form1.dtpPurchase.position(100,335)
+gui.SS_Form1.dtpPurchase.enabled(True)
+gui.SS_Form1.dtpPurchase.checkbox(False)
+gui.SS_Form1.lbl_txtOrderNo.create(label,"Order",True,1800,200,1,100,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtOrderNo.create(textbox,"",True,1800,330,0,100,965,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtOrderLn.create(label,"Line",True,1800,200,1,1985,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtOrderLn.create(textbox,"",True,1725,330,0,1985,965,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtPartNo.create(label,"Part",True,1800,200,1,3780,765,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPartNo.create(textbox,"",True,3600,330,0,3785,965,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtWarrantyID.create(label,"Warranty Plan ID",True,1800,200,1,100,1465,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtWarrantyID.create(textbox,"",True,4605,330,0,100,1665,False,0,Arial,8,16777215,1)
+gui.SS_Form1.txtWarrantyID.maxLength(50)
+gui.SS_Form1.cmd_txtWarrantyID.create(button)
+gui.SS_Form1.cmd_txtWarrantyID.caption("^")
+gui.SS_Form1.cmd_txtWarrantyID.visible(True)
+gui.SS_Form1.cmd_txtWarrantyID.size(330,330)
+gui.SS_Form1.cmd_txtWarrantyID.zorder(0)
+gui.SS_Form1.cmd_txtWarrantyID.position(4745,1665)
+gui.SS_Form1.cmd_txtWarrantyID.enabled(True)
+gui.SS_Form1.cmd_txtWarrantyID.fontname("Arial")
+gui.SS_Form1.cmd_txtWarrantyID.fontsize(8)
+gui.SS_Form1.cmd_txtWarrantyID.event(click,cmd_txtwarrantyid_click)
+gui.SS_Form1.lbl_txtNameF.create(label,"First Name",True,1800,200,1,100,2165,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtNameF.create(textbox,"",True,3600,330,0,100,2365,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtNameF.maxLength(20)
+gui.SS_Form1.lbl_txtNameL.create(label,"Last Name",True,1800,200,1,3785,2165,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtNameL.create(textbox,"",True,3600,330,0,3785,2365,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtNameL.maxLength(20)
+gui.SS_Form1.lbl_txtAddress1.create(label,"Address1",True,1800,200,1,100,2865,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtAddress1.create(textbox,"",True,3600,330,0,100,3065,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtAddress1.maxLength(30)
+gui.SS_Form1.lbl_txtAddress2.create(label,"Address2",True,1800,200,1,3785,2865,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtAddress2.create(textbox,"",True,3600,330,0,3785,3065,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtAddress2.maxLength(30)
+gui.SS_Form1.lbl_txtCity.create(label,"City",True,1800,200,1,100,3565,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtCity.create(textbox,"",True,3600,330,0,100,3765,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtCity.maxLength(15)
+gui.SS_Form1.lbl_txtState.create(label,"State",True,1800,200,1,3785,3565,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtState.create(textbox,"",True,1725,330,0,3785,3765,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtState.maxLength(2)
+gui.SS_Form1.lbl_txtZip.create(label,"Zip Code",True,1800,200,1,5580,3565,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtZip.create(textbox,"",True,1800,330,0,5580,3765,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtZip.maxLength(13)
+gui.SS_Form1.lbl_txtPhoneH.create(label,"Home Phone",True,1800,200,1,100,4265,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPhoneH.create(textbox,"",True,3600,330,0,100,4465,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtPhoneH.maxLength(10)
+gui.SS_Form1.lbl_txtPhoneW.create(label,"Work Phone",True,1800,200,1,3785,4265,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPhoneW.create(textbox,"",True,3600,330,0,3785,4465,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtPhoneW.maxLength(10)
+gui.SS_Form1.lbl_txtSerialStart.create(label,"Serial Start",True,1800,200,1,100,4965,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtSerialStart.create(textbox,"",True,2775,330,0,100,5165,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtSerialStart.maxLength(50)
+gui.SS_Form1.txtSerialStart.event(lostfocus,txtserialstart_lostfocus)
+gui.SS_Form1.lbl_txtSerialEnd.create(label,"Serial End",True,1800,200,1,3005,4965,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtSerialEnd.create(textbox,"",True,2775,330,0,3000,5165,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtSerialEnd.maxLength(50)
+gui.SS_Form1.cmdSerialAdd.create(button)
+gui.SS_Form1.cmdSerialAdd.caption("Add")
+gui.SS_Form1.cmdSerialAdd.visible(True)
+gui.SS_Form1.cmdSerialAdd.size(1000,360)
+gui.SS_Form1.cmdSerialAdd.zorder(0)
+gui.SS_Form1.cmdSerialAdd.position(5820,5130)
+gui.SS_Form1.cmdSerialAdd.enabled(True)
+gui.SS_Form1.cmdSerialAdd.fontname("Arial")
+gui.SS_Form1.cmdSerialAdd.fontsize(8)
+gui.SS_Form1.cmdSerialAdd.event(click,cmdserialadd_click)
+gui.SS_Form1.cmdSave.create(button)
+gui.SS_Form1.cmdSave.caption("Save")
+gui.SS_Form1.cmdSave.visible(True)
+gui.SS_Form1.cmdSave.size(1000,360)
+gui.SS_Form1.cmdSave.zorder(0)
+gui.SS_Form1.cmdSave.position(100,7955)
+gui.SS_Form1.cmdSave.enabled(False)
+gui.SS_Form1.cmdSave.fontname("Arial")
+gui.SS_Form1.cmdSave.fontsize(8)
+gui.SS_Form1.cmdSave.event(click,cmdsave_click)
+gui.SS_Form1.gsflexgrid1.create(gsflexgrid)
+gui.SS_Form1.gsflexgrid1.FixedRows(0)
+gui.SS_Form1.gsflexgrid1.FixedCols(0)
+gui.SS_Form1.gsflexgrid1.visible(True)
+gui.SS_Form1.gsflexgrid1.size(6675,2235)
+gui.SS_Form1.gsflexgrid1.zorder(0)
+gui.SS_Form1.gsflexgrid1.position(100,5600)
+gui.SS_Form1.gsflexgrid1.enabled(True)
+gui.SS_Form1.gsflexgrid1.event(commandclick,gsflexgrid1_commandclick)
+gui.SS_Form1.cmdUser.create(button)
+gui.SS_Form1.cmdUser.caption("Fields")
+gui.SS_Form1.cmdUser.visible(True)
+gui.SS_Form1.cmdUser.size(855,375)
+gui.SS_Form1.cmdUser.zorder(0)
+gui.SS_Form1.cmdUser.position(1200,7955)
+gui.SS_Form1.cmdUser.enabled(False)
+gui.SS_Form1.cmdUser.fontname("Arial")
+gui.SS_Form1.cmdUser.fontsize(8)
+gui.SS_Form1.cmdUser.event(click,cmduser_click)
+gui.SS_Form1.lblPrefix.create(label,"Prefix",True,1935,255,1,5300,1465,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPrefix.create(textbox,"",True,2085,330,0,5285,1665,True,0,Arial,8,-2147483643,1)
+gui.SS_Form1.txtPrefix.maxLength(10)
+gui.SS_Form1.dtpPurchase.tabstop(True)
+gui.SS_Form1.dtpPurchase.tabindex(1)
+gui.SS_Form1.cmd_txtWarrantyID.tabstop(True)
+gui.SS_Form1.cmd_txtWarrantyID.tabindex(2)
+gui.SS_Form1.txtNameF.tabstop(True)
+gui.SS_Form1.txtNameF.tabindex(3)
+gui.SS_Form1.txtNameL.tabstop(True)
+gui.SS_Form1.txtNameL.tabindex(4)
+gui.SS_Form1.txtAddress1.tabstop(True)
+gui.SS_Form1.txtAddress1.tabindex(5)
+gui.SS_Form1.txtAddress2.tabstop(True)
+gui.SS_Form1.txtAddress2.tabindex(6)
+gui.SS_Form1.txtCity.tabstop(True)
+gui.SS_Form1.txtCity.tabindex(7)
+gui.SS_Form1.txtState.tabstop(True)
+gui.SS_Form1.txtState.tabindex(8)
+gui.SS_Form1.txtZip.tabstop(True)
+gui.SS_Form1.txtZip.tabindex(9)
+gui.SS_Form1.txtPhoneH.tabstop(True)
+gui.SS_Form1.txtPhoneH.tabindex(10)
+gui.SS_Form1.txtPhoneW.tabstop(True)
+gui.SS_Form1.txtPhoneW.tabindex(11)
+gui.SS_Form1.txtSerialStart.tabstop(True)
+gui.SS_Form1.txtSerialStart.tabindex(12)
+gui.SS_Form1.txtSerialEnd.tabstop(True)
+gui.SS_Form1.txtSerialEnd.tabindex(13)
+gui.SS_Form1.cmdSerialAdd.tabstop(True)
+gui.SS_Form1.cmdSerialAdd.tabindex(14)
+gui.SS_Form1.cmdSave.tabstop(True)
+gui.SS_Form1.cmdSave.tabindex(15)
+gui.SS_Form1.cmdUser.tabstop(True)
+gui.SS_Form1.cmdUser.tabindex(16)
+
+
+
+gui.SS_Form2..create
+gui.SS_Form2..caption("Generate Warranty - User Fields")
+gui.SS_Form2..size(16005,7320)
+gui.SS_Form2..position(-420,-8400)
+gui.SS_Form2..event(unload,UnloadUser)
+gui.SS_Form2..alwaysontop(False)
+gui.SS_Form2..fontname("Arial")
+gui.SS_Form2..fontsize(8)
+gui.SS_Form2..forecolor(0)
+gui.SS_Form2..fontstyle(False,False,False,False,)
+gui.SS_Form2..BackColor(-2147483633)
+gui.SS_Form2..controlbox(True)
+gui.SS_Form2..maxbutton(False)
+gui.SS_Form2..minbutton(False)
+gui.SS_Form2..mousepointer(0)
+gui.SS_Form2..moveable(True)
+gui.SS_Form2..sizeable(False)
+gui.SS_Form2..ShowInTaskBar(True)
+gui.SS_Form2..titlebar(True)
+gui.SS_Form2.tabx1.create(tab)
+gui.SS_Form2.tabx1.tabs(3)
+gui.SS_Form2.tabx1.tabsperrow(3)
+gui.SS_Form2.tabx1.settab(0)
+gui.SS_Form2.tabx1.caption("1 - 25")
+gui.SS_Form2.tabx1.settab(1)
+gui.SS_Form2.tabx1.caption("26 - 50")
+gui.SS_Form2.tabx1.settab(2)
+gui.SS_Form2.tabx1.caption("51 - 75")
+gui.SS_Form2.tabx1.size(15375,5985)
+gui.SS_Form2.tabx1.position(200,200)
+gui.SS_Form2.tabx1.visible(True)
+gui.SS_Form2.tabx1.fontname("Arial")
+gui.SS_Form2.tabx1.fontsize(8)
+gui.SS_Form2.frame1.create(frame)
+gui.SS_Form2.frame1.caption("")
+gui.SS_Form2.frame1.parent("tabx1",0)
+gui.SS_Form2.frame1.size(14985,5295)
+gui.SS_Form2.frame1.position(150,40)
+gui.SS_Form2.frame1.visible(True)
+gui.SS_Form2.frame1.fontname("Arial")
+gui.SS_Form2.frame1.fontsize(8)
+gui.SS_Form2.frame2.create(frame)
+gui.SS_Form2.frame2.caption("")
+gui.SS_Form2.frame2.parent("tabx1",1)
+gui.SS_Form2.frame2.size(14985,5295)
+gui.SS_Form2.frame2.position(150,40)
+gui.SS_Form2.frame2.visible(True)
+gui.SS_Form2.frame2.fontname("Arial")
+gui.SS_Form2.frame2.fontsize(8)
+gui.SS_Form2.frame3.create(frame)
+gui.SS_Form2.frame3.caption("")
+gui.SS_Form2.frame3.parent("tabx1",2)
+gui.SS_Form2.frame3.size(14985,5295)
+gui.SS_Form2.frame3.position(150,40)
+gui.SS_Form2.frame3.visible(True)
+gui.SS_Form2.frame3.fontname("Arial")
+gui.SS_Form2.frame3.fontsize(8)
+gui.SS_Form2.lbl_txt1.create(label,"User1",True,3495,200,1,100,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt1.parent("frame1")
+gui.SS_Form2.txt1.create(textbox,"",True,3600,330,0,100,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt1.parent("frame1")
+gui.SS_Form2.txt1.maxLength(30)
+gui.SS_Form2.lbl_txt2.create(label,"User2",True,3510,200,1,3785,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt2.parent("frame1")
+gui.SS_Form2.txt2.create(textbox,"",True,3600,345,0,3785,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt2.parent("frame1")
+gui.SS_Form2.txt2.maxLength(30)
+gui.SS_Form2.lbl_txt3.create(label,"User3",True,3450,200,1,7470,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt3.parent("frame1")
+gui.SS_Form2.txt3.create(textbox,"",True,3600,330,0,7470,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt3.parent("frame1")
+gui.SS_Form2.txt3.maxLength(30)
+gui.SS_Form2.lbl_txt4.create(label,"User4",True,3525,200,1,11155,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt4.parent("frame1")
+gui.SS_Form2.txt4.create(textbox,"",True,3600,330,0,11155,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt4.parent("frame1")
+gui.SS_Form2.txt4.maxLength(30)
+gui.SS_Form2.lbl_txt5.create(label,"User5",True,3525,200,1,100,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt5.parent("frame1")
+gui.SS_Form2.txt5.create(textbox,"",True,3600,330,0,100,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt5.parent("frame1")
+gui.SS_Form2.txt5.maxLength(30)
+gui.SS_Form2.lbl_txt6.create(label,"User6",True,3495,200,1,3785,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt6.parent("frame1")
+gui.SS_Form2.txt6.create(textbox,"",True,3600,330,0,3785,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt6.parent("frame1")
+gui.SS_Form2.txt6.maxLength(30)
+gui.SS_Form2.lbl_txt7.create(label,"User7",True,3510,200,1,7470,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt7.parent("frame1")
+gui.SS_Form2.txt7.create(textbox,"",True,3600,330,0,7470,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt7.parent("frame1")
+gui.SS_Form2.txt7.maxLength(30)
+gui.SS_Form2.lbl_txt8.create(label,"User8",True,3525,200,1,11155,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt8.parent("frame1")
+gui.SS_Form2.txt8.create(textbox,"",True,3600,330,0,11155,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt8.parent("frame1")
+gui.SS_Form2.txt8.maxLength(30)
+gui.SS_Form2.lbl_txt9.create(label,"User9",True,3510,200,1,100,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt9.parent("frame1")
+gui.SS_Form2.txt9.create(textbox,"",True,3600,330,0,100,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt9.parent("frame1")
+gui.SS_Form2.txt9.maxLength(30)
+gui.SS_Form2.lbl_txt10.create(label,"User10",True,3585,200,1,3785,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt10.parent("frame1")
+gui.SS_Form2.txt10.create(textbox,"",True,3600,330,0,3785,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt10.parent("frame1")
+gui.SS_Form2.txt10.maxLength(30)
+gui.SS_Form2.lbl_txt11.create(label,"User11",True,3495,200,1,7470,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt11.parent("frame1")
+gui.SS_Form2.txt11.create(textbox,"",True,3600,330,0,7470,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt11.parent("frame1")
+gui.SS_Form2.txt11.maxLength(30)
+gui.SS_Form2.lbl_txt12.create(label,"User12",True,3480,200,1,11155,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt12.parent("frame1")
+gui.SS_Form2.txt12.create(textbox,"",True,3600,330,0,11155,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt12.parent("frame1")
+gui.SS_Form2.txt12.maxLength(30)
+gui.SS_Form2.lbl_txt13.create(label,"User13",True,3525,200,1,100,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt13.parent("frame1")
+gui.SS_Form2.txt13.create(textbox,"",True,3600,330,0,100,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt13.parent("frame1")
+gui.SS_Form2.txt13.maxLength(30)
+gui.SS_Form2.lbl_txt14.create(label,"User14",True,3525,200,1,3785,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt14.parent("frame1")
+gui.SS_Form2.txt14.create(textbox,"",True,3600,330,0,3785,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt14.parent("frame1")
+gui.SS_Form2.txt14.maxLength(30)
+gui.SS_Form2.lbl_txt15.create(label,"User15",True,3525,200,1,7470,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt15.parent("frame1")
+gui.SS_Form2.txt15.create(textbox,"",True,3600,330,0,7470,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt15.parent("frame1")
+gui.SS_Form2.txt15.maxLength(30)
+gui.SS_Form2.lbl_txt16.create(label,"User16",True,3510,200,1,11155,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt16.parent("frame1")
+gui.SS_Form2.txt16.create(textbox,"",True,3600,330,0,11155,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt16.parent("frame1")
+gui.SS_Form2.txt16.maxLength(30)
+gui.SS_Form2.lbl_txt17.create(label,"User17",True,3540,200,1,100,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt17.parent("frame1")
+gui.SS_Form2.txt17.create(textbox,"",True,3600,330,0,100,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt17.parent("frame1")
+gui.SS_Form2.txt17.maxLength(30)
+gui.SS_Form2.lbl_txt18.create(label,"User18",True,3555,200,1,3785,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt18.parent("frame1")
+gui.SS_Form2.txt18.create(textbox,"",True,3600,330,0,3785,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt18.parent("frame1")
+gui.SS_Form2.txt18.maxLength(30)
+gui.SS_Form2.lbl_txt19.create(label,"User19",True,3140,200,1,7470,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt19.parent("frame1")
+gui.SS_Form2.txt19.create(textbox,"",True,3600,330,0,7470,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt19.parent("frame1")
+gui.SS_Form2.txt19.maxLength(30)
+gui.SS_Form2.lbl_txt20.create(label,"User20",True,3510,200,1,11155,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt20.parent("frame1")
+gui.SS_Form2.txt20.create(textbox,"",True,3600,330,0,11155,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt20.parent("frame1")
+gui.SS_Form2.txt20.maxLength(30)
+gui.SS_Form2.lbl_txt21.create(label,"User21",True,3510,200,1,100,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt21.parent("frame1")
+gui.SS_Form2.txt21.create(textbox,"",True,3600,330,0,100,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt21.parent("frame1")
+gui.SS_Form2.txt21.maxLength(30)
+gui.SS_Form2.lbl_txt22.create(label,"User22",True,3495,200,1,3785,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt22.parent("frame1")
+gui.SS_Form2.txt22.create(textbox,"",True,3600,330,0,3785,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt22.parent("frame1")
+gui.SS_Form2.txt22.maxLength(30)
+gui.SS_Form2.lbl_txt23.create(label,"User23",True,3480,200,1,7470,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt23.parent("frame1")
+gui.SS_Form2.txt23.create(textbox,"",True,3600,330,0,7470,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt23.parent("frame1")
+gui.SS_Form2.txt23.maxLength(30)
+gui.SS_Form2.lbl_txt24.create(label,"User24",True,3465,200,1,11155,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt24.parent("frame1")
+gui.SS_Form2.txt24.create(textbox,"",True,3600,330,0,11155,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt24.parent("frame1")
+gui.SS_Form2.txt24.maxLength(30)
+gui.SS_Form2.lbl_txt25.create(label,"User25",True,3465,200,1,100,4540,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt25.parent("frame1")
+gui.SS_Form2.txt25.create(textbox,"",True,3600,330,0,100,4740,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt25.parent("frame1")
+gui.SS_Form2.txt25.maxLength(30)
+gui.SS_Form2.lbl_txt26.create(label,"User26",True,3495,200,1,100,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt26.parent("frame2")
+gui.SS_Form2.txt26.create(textbox,"",True,3600,330,0,100,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt26.parent("frame2")
+gui.SS_Form2.txt26.maxLength(30)
+gui.SS_Form2.lbl_txt27.create(label,"User27",True,3510,200,1,3785,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt27.parent("frame2")
+gui.SS_Form2.txt27.create(textbox,"",True,3600,345,0,3785,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt27.parent("frame2")
+gui.SS_Form2.txt27.maxLength(30)
+gui.SS_Form2.lbl_txt28.create(label,"User28",True,3450,200,1,7470,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt28.parent("frame2")
+gui.SS_Form2.txt28.create(textbox,"",True,3600,330,0,7470,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt28.parent("frame2")
+gui.SS_Form2.txt28.maxLength(30)
+gui.SS_Form2.lbl_txt29.create(label,"User29",True,3510,200,1,11155,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt29.parent("frame2")
+gui.SS_Form2.txt29.create(textbox,"",True,3600,330,0,11155,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt29.parent("frame2")
+gui.SS_Form2.txt29.maxLength(30)
+gui.SS_Form2.lbl_txt30.create(label,"User30",True,3510,200,1,100,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt30.parent("frame2")
+gui.SS_Form2.txt30.create(textbox,"",True,3600,330,0,100,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt30.parent("frame2")
+gui.SS_Form2.txt30.maxLength(30)
+gui.SS_Form2.lbl_txt31.create(label,"User31",True,3525,200,1,3785,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt31.parent("frame2")
+gui.SS_Form2.txt31.create(textbox,"",True,3600,330,0,3785,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt31.parent("frame2")
+gui.SS_Form2.txt31.maxLength(30)
+gui.SS_Form2.lbl_txt32.create(label,"User32",True,3525,200,1,7470,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt32.parent("frame2")
+gui.SS_Form2.txt32.create(textbox,"",True,3600,330,0,7470,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt32.parent("frame2")
+gui.SS_Form2.txt32.maxLength(30)
+gui.SS_Form2.lbl_txt33.create(label,"User33",True,3525,200,1,11155,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt33.parent("frame2")
+gui.SS_Form2.txt33.create(textbox,"",True,3600,330,0,11155,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt33.parent("frame2")
+gui.SS_Form2.txt33.maxLength(30)
+gui.SS_Form2.lbl_txt34.create(label,"User34",True,3495,200,1,100,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt34.parent("frame2")
+gui.SS_Form2.txt34.create(textbox,"",True,3600,330,0,100,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt34.parent("frame2")
+gui.SS_Form2.txt34.maxLength(30)
+gui.SS_Form2.lbl_txt35.create(label,"User35",True,3510,200,1,3785,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt35.parent("frame2")
+gui.SS_Form2.txt35.create(textbox,"",True,3600,330,0,3785,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt35.parent("frame2")
+gui.SS_Form2.txt35.maxLength(30)
+gui.SS_Form2.lbl_txt36.create(label,"User36",True,3495,200,1,7470,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt36.parent("frame2")
+gui.SS_Form2.txt36.create(textbox,"",True,3600,330,0,7470,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt36.parent("frame2")
+gui.SS_Form2.txt36.maxLength(30)
+gui.SS_Form2.lbl_txt37.create(label,"User37",True,3555,200,1,11155,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt37.parent("frame2")
+gui.SS_Form2.txt37.create(textbox,"",True,3600,330,0,11155,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt37.parent("frame2")
+gui.SS_Form2.txt37.maxLength(30)
+gui.SS_Form2.lbl_txt38.create(label,"User38",True,3510,200,1,100,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt38.parent("frame2")
+gui.SS_Form2.txt38.create(textbox,"",True,3600,330,0,100,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt38.parent("frame2")
+gui.SS_Form2.txt38.maxLength(30)
+gui.SS_Form2.lbl_txt39.create(label,"User39",True,3540,200,1,3785,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt39.parent("frame2")
+gui.SS_Form2.txt39.create(textbox,"",True,3600,330,0,3785,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt39.parent("frame2")
+gui.SS_Form2.txt39.maxLength(30)
+gui.SS_Form2.lbl_txt40.create(label,"User40",True,3555,200,1,7470,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt40.parent("frame2")
+gui.SS_Form2.txt40.create(textbox,"",True,3600,330,0,7470,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt40.parent("frame2")
+gui.SS_Form2.txt40.maxLength(30)
+gui.SS_Form2.lbl_txt41.create(label,"User41",True,3525,200,1,11155,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt41.parent("frame2")
+gui.SS_Form2.txt41.create(textbox,"",True,3600,330,0,11155,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt41.parent("frame2")
+gui.SS_Form2.txt41.maxLength(30)
+gui.SS_Form2.lbl_txt42.create(label,"User42",True,3510,200,1,100,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt42.parent("frame2")
+gui.SS_Form2.txt42.create(textbox,"",True,3600,330,0,100,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt42.parent("frame2")
+gui.SS_Form2.txt42.maxLength(30)
+gui.SS_Form2.lbl_txt43.create(label,"User43",True,3480,200,1,3785,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt43.parent("frame2")
+gui.SS_Form2.txt43.create(textbox,"",True,3600,330,0,3785,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt43.parent("frame2")
+gui.SS_Form2.txt43.maxLength(30)
+gui.SS_Form2.lbl_txt44.create(label,"User44",True,3525,200,1,7470,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt44.parent("frame2")
+gui.SS_Form2.txt44.create(textbox,"",True,3600,330,0,7470,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt44.parent("frame2")
+gui.SS_Form2.txt44.maxLength(30)
+gui.SS_Form2.lbl_txt45.create(label,"User45",True,3495,200,1,11155,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt45.parent("frame2")
+gui.SS_Form2.txt45.create(textbox,"",True,3600,330,0,11155,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt45.parent("frame2")
+gui.SS_Form2.txt45.maxLength(30)
+gui.SS_Form2.lbl_txt46.create(label,"User46",True,3510,200,1,100,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt46.parent("frame2")
+gui.SS_Form2.txt46.create(textbox,"",True,3600,330,0,100,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt46.parent("frame2")
+gui.SS_Form2.txt46.maxLength(30)
+gui.SS_Form2.lbl_txt47.create(label,"User47",True,3495,200,1,3785,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt47.parent("frame2")
+gui.SS_Form2.txt47.create(textbox,"",True,3600,330,0,3785,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt47.parent("frame2")
+gui.SS_Form2.txt47.maxLength(30)
+gui.SS_Form2.lbl_txt48.create(label,"User48",True,3570,200,1,7470,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt48.parent("frame2")
+gui.SS_Form2.txt48.create(textbox,"",True,3600,330,0,7470,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt48.parent("frame2")
+gui.SS_Form2.txt48.maxLength(30)
+gui.SS_Form2.lbl_txt49.create(label,"User49",True,3480,200,1,11155,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt49.parent("frame2")
+gui.SS_Form2.txt49.create(textbox,"",True,3600,330,0,11155,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt49.parent("frame2")
+gui.SS_Form2.txt49.maxLength(30)
+gui.SS_Form2.lbl_txt50.create(label,"User50",True,3480,200,1,100,4540,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt50.parent("frame2")
+gui.SS_Form2.txt50.create(textbox,"",True,3600,330,0,100,4740,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt50.parent("frame2")
+gui.SS_Form2.txt50.maxLength(30)
+gui.SS_Form2.lbl_txt51.create(label,"User51",True,3540,200,1,100,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt51.parent("frame3")
+gui.SS_Form2.txt51.create(textbox,"",True,3600,330,0,100,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt51.parent("frame3")
+gui.SS_Form2.txt51.maxLength(30)
+gui.SS_Form2.lbl_txt52.create(label,"User52",True,3510,200,1,3785,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt52.parent("frame3")
+gui.SS_Form2.txt52.create(textbox,"",True,3600,330,0,3785,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt52.parent("frame3")
+gui.SS_Form2.txt52.maxLength(30)
+gui.SS_Form2.lbl_txt53.create(label,"User53",True,3540,200,1,7470,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt53.parent("frame3")
+gui.SS_Form2.txt53.create(textbox,"",True,3600,330,0,7470,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt53.parent("frame3")
+gui.SS_Form2.txt53.maxLength(30)
+gui.SS_Form2.lbl_txt54.create(label,"User54",True,3495,200,1,11155,340,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt54.parent("frame3")
+gui.SS_Form2.txt54.create(textbox,"",True,3600,330,0,11155,540,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt54.parent("frame3")
+gui.SS_Form2.txt54.maxLength(30)
+gui.SS_Form2.lbl_txt55.create(label,"User55",True,3525,200,1,100,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt55.parent("frame3")
+gui.SS_Form2.txt55.create(textbox,"",True,3600,330,0,100,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt55.parent("frame3")
+gui.SS_Form2.txt55.maxLength(30)
+gui.SS_Form2.lbl_txt56.create(label,"User56",True,3540,200,1,3785,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt56.parent("frame3")
+gui.SS_Form2.txt56.create(textbox,"",True,3600,330,0,3785,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt56.parent("frame3")
+gui.SS_Form2.txt56.maxLength(30)
+gui.SS_Form2.lbl_txt57.create(label,"User57",True,3525,200,1,7470,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt57.parent("frame3")
+gui.SS_Form2.txt57.create(textbox,"",True,3600,330,0,7470,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt57.parent("frame3")
+gui.SS_Form2.txt57.maxLength(30)
+gui.SS_Form2.lbl_txt58.create(label,"User58",True,3495,200,1,11155,1040,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt58.parent("frame3")
+gui.SS_Form2.txt58.create(textbox,"",True,3600,330,0,11155,1240,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt58.parent("frame3")
+gui.SS_Form2.txt58.maxLength(30)
+gui.SS_Form2.lbl_txt59.create(label,"User59",True,3540,200,1,100,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt59.parent("frame3")
+gui.SS_Form2.txt59.create(textbox,"",True,3600,330,0,100,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt59.parent("frame3")
+gui.SS_Form2.txt59.maxLength(30)
+gui.SS_Form2.lbl_txt60.create(label,"User60",True,3525,200,1,3785,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt60.parent("frame3")
+gui.SS_Form2.txt60.create(textbox,"",True,3600,330,0,3785,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt60.parent("frame3")
+gui.SS_Form2.txt60.maxLength(30)
+gui.SS_Form2.lbl_txt61.create(label,"User61",True,3510,200,1,7470,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt61.parent("frame3")
+gui.SS_Form2.txt61.create(textbox,"",True,3600,330,0,7470,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt61.parent("frame3")
+gui.SS_Form2.txt61.maxLength(30)
+gui.SS_Form2.lbl_txt62.create(label,"User62",True,3510,200,1,11155,1740,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt62.parent("frame3")
+gui.SS_Form2.txt62.create(textbox,"",True,3600,330,0,11155,1940,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt62.parent("frame3")
+gui.SS_Form2.txt62.maxLength(30)
+gui.SS_Form2.lbl_txt63.create(label,"User63",True,3555,200,1,100,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt63.parent("frame3")
+gui.SS_Form2.txt63.create(textbox,"",True,3600,330,0,100,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt63.parent("frame3")
+gui.SS_Form2.txt63.maxLength(30)
+gui.SS_Form2.lbl_txt64.create(label,"User64",True,3555,200,1,3785,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt64.parent("frame3")
+gui.SS_Form2.txt64.create(textbox,"",True,3600,330,0,3785,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt64.parent("frame3")
+gui.SS_Form2.txt64.maxLength(30)
+gui.SS_Form2.lbl_txt65.create(label,"User65",True,3525,200,1,7470,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt65.parent("frame3")
+gui.SS_Form2.txt65.create(textbox,"",True,3600,330,0,7470,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt65.parent("frame3")
+gui.SS_Form2.txt65.maxLength(30)
+gui.SS_Form2.lbl_txt66.create(label,"User66",True,3525,200,1,11155,2440,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt66.parent("frame3")
+gui.SS_Form2.txt66.create(textbox,"",True,3600,330,0,11155,2640,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt66.parent("frame3")
+gui.SS_Form2.txt66.maxLength(30)
+gui.SS_Form2.lbl_txt67.create(label,"User67",True,3570,200,1,100,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt67.parent("frame3")
+gui.SS_Form2.txt67.create(textbox,"",True,3600,330,0,100,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt67.parent("frame3")
+gui.SS_Form2.txt67.maxLength(30)
+gui.SS_Form2.lbl_txt68.create(label,"User68",True,3525,200,1,3785,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt68.parent("frame3")
+gui.SS_Form2.txt68.create(textbox,"",True,3600,330,0,3785,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt68.parent("frame3")
+gui.SS_Form2.txt68.maxLength(30)
+gui.SS_Form2.lbl_txt69.create(label,"User69",True,3525,200,1,7470,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt69.parent("frame3")
+gui.SS_Form2.txt69.create(textbox,"",True,3600,330,0,7470,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt69.parent("frame3")
+gui.SS_Form2.txt69.maxLength(30)
+gui.SS_Form2.lbl_txt70.create(label,"User70",True,3525,200,1,11155,3140,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt70.parent("frame3")
+gui.SS_Form2.txt70.create(textbox,"",True,3600,330,0,11155,3340,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt70.parent("frame3")
+gui.SS_Form2.txt70.maxLength(30)
+gui.SS_Form2.lbl_txt71.create(label,"User71",True,3495,200,1,100,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt71.parent("frame3")
+gui.SS_Form2.txt71.create(textbox,"",True,3600,330,0,100,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt71.parent("frame3")
+gui.SS_Form2.txt71.maxLength(30)
+gui.SS_Form2.lbl_txt72.create(label,"User72",True,3555,200,1,3785,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt72.parent("frame3")
+gui.SS_Form2.txt72.create(textbox,"",True,3600,330,0,3785,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt72.parent("frame3")
+gui.SS_Form2.txt72.maxLength(30)
+gui.SS_Form2.lbl_txt73.create(label,"User73",True,3525,200,1,7470,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt73.parent("frame3")
+gui.SS_Form2.txt73.create(textbox,"",True,3600,330,0,7470,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt73.parent("frame3")
+gui.SS_Form2.txt73.maxLength(30)
+gui.SS_Form2.lbl_txt74.create(label,"User74",True,3510,200,1,11155,3840,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt74.parent("frame3")
+gui.SS_Form2.txt74.create(textbox,"",True,3600,330,0,11155,4040,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt74.parent("frame3")
+gui.SS_Form2.txt74.maxLength(30)
+gui.SS_Form2.lbl_txt75.create(label,"User75",True,3540,200,1,100,4540,True,0,Arial,8,-2147483633,0)
+gui.SS_Form2.lbl_txt75.parent("frame3")
+gui.SS_Form2.txt75.create(textbox,"",True,3600,330,0,100,4740,True,0,Arial,8,16777215,1)
+gui.SS_Form2.txt75.parent("frame3")
+gui.SS_Form2.txt75.maxLength(30)
+gui.SS_Form2.cmdSaveUser.create(button)
+gui.SS_Form2.cmdSaveUser.caption("Ok")
+gui.SS_Form2.cmdSaveUser.visible(True)
+gui.SS_Form2.cmdSaveUser.size(855,375)
+gui.SS_Form2.cmdSaveUser.zorder(0)
+gui.SS_Form2.cmdSaveUser.position(200,6300)
+gui.SS_Form2.cmdSaveUser.enabled(True)
+gui.SS_Form2.cmdSaveUser.fontname("Arial")
+gui.SS_Form2.cmdSaveUser.fontsize(8)
+gui.SS_Form2.cmdSaveUser.event(click,cmdOkuser_click)
+
+
+
+gui.Form3..create
+gui.Form3..caption("Generate Warranty - User Fields")
+gui.Form3..size(9600,10950)
+gui.Form3..position(0,0)
+gui.Form3..event(unload,UnloadUser)
+gui.Form3..alwaysontop(False)
+gui.Form3..fontname("Arial")
+gui.Form3..fontsize(8)
+gui.Form3..forecolor(0)
+gui.Form3..fontstyle(False,False,False,False,)
+gui.Form3..BackColor(-2147483633)
+gui.Form3..controlbox(True)
+gui.Form3..maxbutton(True)
+gui.Form3..minbutton(True)
+gui.Form3..mousepointer(0)
+gui.Form3..moveable(True)
+gui.Form3..sizeable(False)
+gui.Form3..ShowInTaskBar(True)
+gui.Form3..titlebar(True)
+gui.Form3.gsflexUser.create(gsflexgrid)
+gui.Form3.gsflexUser.FixedRows(0)
+gui.Form3.gsflexUser.FixedCols(0)
+gui.Form3.gsflexUser.visible(True)
+gui.Form3.gsflexUser.size(8955,9555)
+gui.Form3.gsflexUser.zorder(0)
+gui.Form3.gsflexUser.position(200,200)
+gui.Form3.gsflexUser.enabled(True)
+gui.Form3.cmdSaveFlex.create(button)
+gui.Form3.cmdSaveFlex.caption("Ok")
+gui.Form3.cmdSaveFlex.visible(True)
+gui.Form3.cmdSaveFlex.size(855,375)
+gui.Form3.cmdSaveFlex.zorder(0)
+gui.Form3.cmdSaveFlex.position(200,9900)
+gui.Form3.cmdSaveFlex.enabled(True)
+gui.Form3.cmdSaveFlex.fontname("Arial")
+gui.Form3.cmdSaveFlex.fontsize(8)
+gui.Form3.cmdSaveFlex.event(click,cmdOkuser_click)
+
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.sCreateNew.Declare(String)
+Variable.Global.iCreateNewCount.Declare(Long,0)
+Variable.Global.iQtyOrdered.Declare(Long,0)
+Variable.Global.iCount.Declare(Long,0)
+Variable.Global.bQtyCheck.Declare(Boolean,False)
+Variable.Global.sQtyRemaining.Declare(String)
+Program.Sub.Preflight.End
+
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sPart.Declare(String)
+V.Local.sTemp.Declare(String)
+
+
+ 'SO > Lines > rename script  1 button - populate hook
+F.Intrinsic.Control.If(V.Caller.Hook,=,12010)
+	V.Passed.000162.Set("Warranty")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+'short form
+F.Intrinsic.Control.If(V.Caller.Hook,=,12440)
+	V.Passed.000162.Set("Warranty")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Flexbuild)
+F.Intrinsic.Control.CallSub(Flexstyle)
+
+ 'SO > Lines > script 1 button - execute
+F.Intrinsic.Control.If(V.Caller.Hook,=,12410)
+	'check if a part is selected
+	F.Intrinsic.Control.If(V.Passed.000052,=,"")
+		F.Intrinsic.UI.Msgbox("No part selected.","GAB Validation")
+		F.Intrinsic.Control.CallSub(Unload)
+	F.Intrinsic.Control.Else
+'		'validate the part number has a warranty associated by validating user field 13
+		F.Intrinsic.String.GSSPartString(V.Passed.000052,V.Passed.000053,V.Local.sPart)
+		F.Intrinsic.String.Concat("Select * from ATG_INV_ADDL_FIELDS WHERE PART = '",V.Local.sPart.Trim,"' AND LOC='",V.Passed.000054.Trim,"'",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+			F.Intrinsic.UI.Msgbox("No warranty plan assigned to selected part.","GAB Validation")
+			F.Intrinsic.Control.CallSub(Unload)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.If(V.ODBC.con!rst.FieldValTrim!USER_13,=,"")
+				F.Intrinsic.UI.Msgbox("No warranty plan assigned to selected part.","GAB Validation")
+				F.Intrinsic.Control.CallSub(Unload)
+			F.Intrinsic.Control.Else
+				'if part number has warranty plan, validate if quantity is greater > 0
+				F.Intrinsic.Control.If(V.Passed.000007,>,0)
+					V.Global.iQtyOrdered.Set(V.Passed.000007)
+					Gui.SS_Form1.txtWarrantyID.Text(V.ODBC.con!rst.FieldValTrim!USER_13)
+					F.Intrinsic.Control.CallSub(Poplabels)
+					Gui.SS_Form1.txtOrderNo.Text(V.Passed.000060)
+					Gui.SS_Form1.txtOrderLn.Text(V.Passed.000051)
+					Gui.SS_Form1.txtPartNo.Text(V.Local.sPart)
+					Gui.SS_Form1..Show
+				F.Intrinsic.Control.Else
+					F.Intrinsic.UI.Msgbox("Order quantity must be greater than 0.","GAB Validation")
+					F.Intrinsic.Control.CallSub(Unload)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+'short form
+F.Intrinsic.Control.If(V.Caller.Hook,=,12620)
+	'check if a part is selected
+	F.Intrinsic.Control.If(V.Passed.000071,=,"")
+		F.Intrinsic.UI.Msgbox("No part selected.","GAB Validation")
+		F.Intrinsic.Control.CallSub(Unload)
+	F.Intrinsic.Control.Else
+'		'validate the part number has a warranty associated by validating user field 13
+		F.Intrinsic.String.GSSPartString(V.Passed.000071,V.Passed.000072,V.Local.sPart)
+		F.Intrinsic.String.Concat("Select * from ATG_INV_ADDL_FIELDS WHERE PART = '",V.Local.sPart.Trim,"' AND LOC='",V.Passed.000074.Trim,"'",V.Local.sSQL)
+		F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+			F.Intrinsic.UI.Msgbox("No warranty plan assigned to selected part.","GAB Validation")
+			F.Intrinsic.Control.CallSub(Unload)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.If(V.ODBC.con!rst.FieldValTrim!USER_13,=,"")
+				F.Intrinsic.UI.Msgbox("No warranty plan assigned to selected part.","GAB Validation")
+				F.Intrinsic.Control.CallSub(Unload)
+			F.Intrinsic.Control.Else
+				'if part number has warranty plan, validate if quantity is greater > 0
+				F.Intrinsic.Control.If(V.Passed.000001,>,0)
+					'v.passed.000274
+					V.Global.iQtyOrdered.Set(V.Passed.000001)
+					Gui.SS_Form1.txtWarrantyID.Text(V.ODBC.con!rst.FieldValTrim!USER_13)
+					F.Intrinsic.Control.CallSub(Poplabels)
+					Gui.SS_Form1.txtOrderNo.Text(V.Passed.000005)
+					Gui.SS_Form1.txtOrderLn.Text(V.Passed.000013)
+					Gui.SS_Form1.txtPartNo.Text(V.Local.sPart)
+					Gui.SS_Form1..Show
+				F.Intrinsic.Control.Else
+					F.Intrinsic.UI.Msgbox("Order quantity must be greater than 0.","GAB Validation")
+					F.Intrinsic.Control.CallSub(Unload)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+
+Program.Sub.Unload.Start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+
+Program.Sub.Unload.End
+
+
+Program.Sub.PopLabels.Start
+F.Intrinsic.Control.SetErrorHandler("PopLabels_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSQL.Declare(String)
+V.Local.i.Declare(String)
+V.Local.iR.Declare(Long)
+V.Local.iRow.Declare(Long)
+
+Gui.Form3.gsflexUser.Rows(1)
+F.Intrinsic.Control.CallSub(Flexbuilduser)
+V.Local.iR.Set(1)
+'F.Intrinsic.Control.If(V.Screen.SS_Form1!txtWarrantyID.Text,=,"")
+'	F.Intrinsic.UI.Msgbox("Please select a Warranty ID.")
+'F.Intrinsic.Control.Else
+	'======populate all labels on GAB screen from custom table.  (labels are maintained from another GAB script)
+F.Intrinsic.String.Concat("Select * From GCG_3315__PLANID_USRFLD Where PLAN_ID = '",V.Screen.SS_Form1!txtWarrantyID.Text,"' and USED = '1' Order by ID asc",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rstA",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rstA.EOF,=,False)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rstA.EOF,=,True)
+		F.Intrinsic.Math.Add(V.Local.iR,1,V.Local.iR)
+		F.Intrinsic.Math.Sub(V.Local.iR,1,V.Local.iRow)
+		Gui.Form3.gsflexUser.Rows(V.Local.iR)
+		Gui.Form3.gsflexUser.TextMatrix(0,V.Local.iRow,V.ODBC.con!rstA.FieldValTrim!ID)
+		Gui.Form3.gsflexUser.TextMatrix(1,V.Local.iRow,V.ODBC.con!rstA.FieldValTrim!NAME)
+		Gui.Form3.gsflexUser.ApplyStyle(V.Local.iRow,1)
+		F.ODBC.con!rstA.MoveNext
+	F.Intrinsic.Control.Loop
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rstA.Close
+'==========================End of portion========================================================
+'F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PopLabels_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.PopLabels.End
+
+
+program.sub.cmdsave_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.local.iMsg.Declare(Long)
+V.Local.iRow.Declare(Long)
+V.Local.sSQL.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.iA.Declare(Long)
+V.Local.sRow.Declare(String)
+V.Local.sRowArray.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.dDate.Declare(Date)
+V.Local.iRowTwo.Declare(Long)
+V.Local.sRowTwo.Declare(String)
+V.Local.sRowArrayTwo.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtWarrantyID.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Please select a Warranty Plan ID.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.UI.Msgbox("Are you sure you want to issue warranties?","GAB Msg",4,V.Local.iMsg)
+F.Intrinsic.Control.If(V.Local.iMsg,=,7)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.Math.Sub(V.Screen.SS_Form1!gsflexgrid1.Rows,1,V.Local.iRow)
+	F.Intrinsic.Math.Sub(V.Screen.Form3!gsflexUser.Rows,1,V.Local.iRowTwo)
+	F.Intrinsic.Control.For(V.Local.i,1,V.Local.iRow,1)
+		Gui.SS_Form1.gsflexgrid1.ReadRow(V.Local.i,V.Local.sRow)
+		F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowArray)
+		F.Intrinsic.Control.If(V.Local.sRowArray(1),=,"N")
+			F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_GEN where SERIAL = '",V.Local.sRowArray(0).Trim,"'",V.Local.sSQL)
+			F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+				F.ODBC.con!rst.AddNew
+				F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+				F.Intrinsic.String.LPad(V.Screen.SS_Form1!txtOrderNo.Text,0,7,V.Local.sTemp)
+				F.ODBC.con!rst.Set!ORDER_NO(V.Local.sTemp)
+				F.Intrinsic.String.LPad(V.Screen.SS_Form1!txtOrderLn.Text,0,3,V.Local.sTemp)
+				F.Intrinsic.String.RPad(V.Local.sTemp,0,4,V.Local.sTemp)
+				F.ODBC.con!rst.Set!ORDER_LINE(V.Local.sTemp)
+				F.ODBC.con!rst.Set!PART(V.Screen.SS_Form1!txtPartNo.Text)
+				F.ODBC.con!rst.Set!WARRANTY_PLAN_ID(V.Screen.SS_Form1!txtWarrantyID.Text)
+				F.ODBC.con!rst.Set!LASTNAME(V.Screen.SS_Form1!txtNameL.Text)
+				F.ODBC.con!rst.Set!FIRSTNAME(V.Screen.SS_Form1!txtNameF.Text)
+				F.ODBC.con!rst.Set!ADDRESS1(V.Screen.SS_Form1!txtAddress1.Text)
+				F.ODBC.con!rst.Set!ADDRESS2(V.Screen.SS_Form1!txtAddress2.Text)
+				F.ODBC.con!rst.Set!CITY(V.Screen.SS_Form1!txtCity.Text)
+				F.ODBC.con!rst.Set!STATE(V.Screen.SS_Form1!txtState.Text)
+				F.ODBC.con!rst.Set!ZIP(V.Screen.SS_Form1!txtZip.Text)
+				F.ODBC.con!rst.Set!PHONE(V.Screen.SS_Form1!txtPhoneH.Text)
+				F.ODBC.con!rst.Set!WORK_PHONE(V.Screen.SS_Form1!txtPhoneW.Text)
+				V.Local.dDate.Set(V.Screen.SS_Form1!dtpPurchase.Value)
+				F.ODBC.con!rst.Set!PURCHASE_DATE(V.Local.dDate.PervasiveDate)
+				F.ODBC.con!rst.Set!PREFIX(V.Screen.SS_Form1!txtPrefix.Text)
+				F.ODBC.con!rst.Update
+				Gui.SS_Form1.gsflexgrid1.TextMatrix(1,V.Local.i,"Y")
+				Gui.SS_Form1.gsflexgrid1.ApplyStyle(V.Local.i,1)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rst.Close
+			'User Fields 1- 25
+			F.Intrinsic.Control.For(V.Local.iA,1,V.Local.iRowTwo,1)
+				Gui.Form3.gsflexUser.ReadRow(V.Local.iA,V.Local.sRowTwo)
+				F.Intrinsic.String.Split(V.Local.sRowTwo,"*!*",V.Local.sRowArrayTwo)
+				F.Intrinsic.Control.If(V.Local.sRowArrayTwo(0),<=,25)
+					F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER25 Where SERIAL = '",V.Local.sRowArray(0).Trim,"'",V.Local.sSQL)
+					F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+					F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+						F.ODBC.con!rst.AddNew
+						F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+						F.ODBC.con!rst.Set!USER[V.Local.sRowArrayTwo(0)](V.Local.sRowArrayTwo(2))
+					F.Intrinsic.Control.Else
+						F.ODBC.con!rst.Set!USER[V.Local.sRowArrayTwo(0)](V.Local.sRowArrayTwo(2))
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rst.Update
+					F.ODBC.con!rst.Close
+				F.Intrinsic.Control.EndIf
+				'User Fields 26- 50
+				F.Intrinsic.Control.If(V.Local.sRowArrayTwo(0),>,25)
+					F.Intrinsic.Control.If(V.Local.sRowArrayTwo(0),<=,50)
+						F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER50 Where SERIAL = '",V.Local.sRowArray(0).Trim,"'",V.Local.sSQL)
+						F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+						F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+							F.ODBC.con!rst.AddNew
+							F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+							F.ODBC.con!rst.Set!USER[V.Local.sRowArrayTwo(0)](V.Local.sRowArrayTwo(2))
+						F.Intrinsic.Control.Else
+							F.ODBC.con!rst.Set!USER[V.Local.sRowArrayTwo(0)](V.Local.sRowArrayTwo(2))
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rst.Update
+						F.ODBC.con!rst.Close
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+				'User Fields 51- 75
+				F.Intrinsic.Control.If(V.Local.sRowArrayTwo(0),>,51)
+					F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_USER75 Where SERIAL = '",V.Local.sRowArray(0).Trim,"'",V.Local.sSQL)
+					F.ODBC.Connection!con.OpenRecordsetRW("rst",V.Local.sSQL)
+					F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+						F.ODBC.con!rst.AddNew
+						F.ODBC.con!rst.Set!SERIAL(V.Local.sRowArray(0))
+						F.ODBC.con!rst.Set!USER[V.Local.sRowArrayTwo(0)](V.Local.sRowArrayTwo(2))
+					F.Intrinsic.Control.Else
+						F.ODBC.con!rst.Set!USER[V.Local.sRowArrayTwo(0)](V.Local.sRowArrayTwo(2))
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rst.Update
+					F.ODBC.con!rst.Close
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.Next(V.Local.iA)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.EndIf
+
+'F.Intrinsic.Control.CallSub(Clearall)
+F.Intrinsic.UI.Msgbox("Save successful!")
+F.Intrinsic.Control.CallSub(Unload)
+
+	F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdsave_click.end
+
+
+program.sub.txtserialstart_lostfocus.start
+
+'transfers text from textbox1 to textbox2
+Gui.SS_Form1.txtSerialEnd.Text(V.Screen.SS_Form1!txtSerialStart.Text)
+
+
+program.sub.txtserialstart_lostfocus.end
+
+
+program.sub.cmdserialadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdserialadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.i.Declare(Long)
+V.Local.iMsg.Declare(Long)
+V.Local.sSQL.Declare(String)
+V.Local.sMsg.Declare(String)
+V.Local.sAlreadyExist.Declare(String)
+V.Local.sTemp.Declare(String)
+V.Local.iCreateNew.Declare(Long)
+
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtSerialStart.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Please enter a serial number.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtSerialEnd.Text,=,"")
+	F.Intrinsic.UI.Msgbox("Please enter a serial number.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'============find and store serials that already exist and the serial numbers that do not exist from the serial range entered on the GAB screen.===========
+V.Global.sCreateNew.Redim(0,0)
+V.Local.sAlreadyExist.Set("")
+F.Intrinsic.Control.For(V.Local.i,V.Screen.SS_Form1!txtSerialStart.Text,V.Screen.SS_Form1!txtSerialEnd.Text,1)
+	F.Intrinsic.String.Concat("Select * From GCG_3315__WARRANTY_GEN Where SERIAL = '",V.local.i,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+	F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+		F.Intrinsic.String.Concat(V.Local.sAlreadyExist,V.ODBC.con!rst.FieldValTrim!SERIAL,",",V.Local.sAlreadyExist)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Concat(V.Global.sCreateNew,V.Local.i,",",V.Global.sCreateNew)
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.Next(V.Local.i)
+'===================================End this portion===================================================================================
+
+
+'============Checks arrays for serial numbers that exist or do not exist.=====================================================================
+F.Intrinsic.Control.If(V.Local.sAlreadyExist,=,"")
+	'if blank then no serial numbers exist within range, add the whole serial number range to flexgrid.
+	F.Intrinsic.Control.CallSub(Createnewserial)
+F.Intrinsic.Control.Else
+	'If not blank then some or all serial numbers exist with serial range, check if any new serial numbers should be created
+	F.Intrinsic.Control.If(V.Global.sCreateNew,=,"")
+		F.Intrinsic.UI.MsgBox("All serial numbers already exist within the serial range.","GAB Message")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.Else
+		'If not blank then new serial numbers can be added to flexgrid, ask if user wants to create new serial numbers from range that have not been assigned.
+		'Removes the comma at the end of each array
+		F.Intrinsic.String.Len(V.Local.sAlreadyExist,V.Local.iCreateNew)
+		F.Intrinsic.Math.Sub(V.Local.iCreateNew,1,V.Local.iCreateNew)
+		F.Intrinsic.String.Left(V.Local.sAlreadyExist,V.Local.iCreateNew,V.Local.sAlreadyExist)
+		V.Local.sMsg.Set("Serial number(s): ")
+		'F.Intrinsic.String.Concat(V.Local.sMsg,V.Ambient.NewLine,V.Local.sAlreadyExist,V.Ambient.NewLine,"Assign serial numbers from range not listed above?",V.Local.sMsg)
+		F.Intrinsic.String.Concat(V.Local.sMsg,V.Local.sAlreadyExist," are already assigned.",V.Ambient.NewLine,"Add serial numbers not assigned in the serial range?",V.Local.sMsg)
+		F.Intrinsic.UI.MsgBox(V.Local.sMsg,"GAB Msg",4,V.Local.iMsg)
+		F.Intrinsic.Control.If(V.Local.iMsg,=,7)
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.Else
+			F.Intrinsic.Control.CallSub(Createnewserial)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+ F.Intrinsic.Control.EndIf
+'==========================End this portion==============================================================================================
+
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdserialadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdserialadd_click.end
+
+
+Program.Sub.FlexBuild.Start
+F.Intrinsic.Control.SetErrorHandler("FlexBuild_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.gsflexgrid1.Rows(2)
+Gui.SS_Form1.gsflexgrid1.Cols(3)
+Gui.SS_Form1.gsflexgrid1.TextMatrix(0,0,"Serial Number")
+Gui.SS_Form1.gsflexgrid1.ColWidth(0,3300)
+Gui.SS_Form1.gsflexgrid1.TextMatrix(1,0,"Created")
+Gui.SS_Form1.gsflexgrid1.ColWidth(1,1500)
+Gui.SS_Form1.gsflexgrid1.TextMatrix(2,0,"")
+Gui.SS_Form1.gsflexgrid1.ColWidth(1,2000)
+Gui.SS_Form1.gsflexgrid1.FixedRows(1)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("FlexBuild_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.FlexBuild.End
+
+
+Program.Sub.FlexStyle.Start
+F.Intrinsic.Control.SetErrorHandler("FlexStyle_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.iC.Declare(Long)
+F.Intrinsic.Control.For(V.Local.iC,0,0,1)
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Type","Locked","True")
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Format","Alignment",2)
+F.Intrinsic.Control.Next(V.Local.iC)
+
+F.Intrinsic.Control.For(V.Local.iC,1,1,1)
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Type","Locked","True")
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Format","Alignment",4)
+F.Intrinsic.Control.Next(V.Local.iC)
+
+F.Intrinsic.Control.For(V.Local.iC,2,2,1)
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Type","Command","Delete")
+	Gui.SS_Form1.gsflexgrid1.BuildStyle(1,V.Local.iC,"Format","Alignment",4)
+F.Intrinsic.Control.Next(V.Local.iC)
+'User screen flexgrid
+F.Intrinsic.Control.For(V.Local.iC,0,1,1)
+	Gui.Form3.gsflexUser.BuildStyle(1,V.Local.iC,"Type","Locked","True")
+	Gui.Form3.gsflexUser.BuildStyle(1,V.Local.iC,"Format","Alignment",2)
+F.Intrinsic.Control.Next(V.Local.iC)
+
+F.Intrinsic.Control.For(V.Local.iC,2,2,1)
+	Gui.Form3.gsflexUser.BuildStyle(1,V.Local.iC,"Type","Locked","False")
+	Gui.Form3.gsflexUser.BuildStyle(1,V.Local.iC,"Format","Alignment",2)
+F.Intrinsic.Control.Next(V.Local.iC)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("FlexStyle_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.FlexStyle.End
+
+
+Program.Sub.CreateNewSerial.Start
+F.Intrinsic.Control.SetErrorHandler("CreateNewSerial_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.i.Declare(Long)
+V.Local.iR.Declare(Long,1)
+V.Local.iRow.Declare(Long)
+V.Local.iCreateNew.Declare(Long)
+V.Local.iErrorCalc.Declare(Long)
+V.Local.iSerialEnd.Declare(Long)
+V.Local.iSerialStart.Declare(Long)
+V.Local.sMsg.Declare(String)
+
+V.Local.iSerialEnd.Set(V.Screen.SS_Form1!txtSerialEnd.Text)
+V.Local.iSerialStart.Set(V.Screen.SS_Form1!txtSerialStart.Text)
+F.Intrinsic.Control.CallSub(Qtycheck)
+F.Intrinsic.Control.If(V.Global.iCount,>=,V.Global.iQtyOrdered)
+	F.Intrinsic.UI.Msgbox("NO new serial numbers can be added for this Sales Order Line.  Records were created prior to this warranty for this Sales Order Line. The amount of serial numbers already created are equal to the order qty.","GAB Validation")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	F.Intrinsic.Math.Sub(V.Local.iSerialEnd,V.Local.iSerialStart,V.Local.iErrorCalc)
+	F.Intrinsic.Math.Add(V.Local.iErrorCalc,1,V.Local.iErrorCalc)
+	F.Intrinsic.Control.If(V.Global.iCount,=,0)
+		F.Intrinsic.Control.If(V.Global.iQtyOrdered,<>,V.Local.iErrorCalc)
+			F.Intrinsic.UI.Msgbox("The number of serial numbers being issued is greater or less than the order qty. Please update the number of serial numbers being issued or the order qty. No serial numbers have been issued.","GAB Validation")
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		'at this point, icount has to be less than qty ordered but greater than 0
+		F.Intrinsic.Math.Sub(V.Global.iQtyOrdered,V.Global.iCount,V.Global.sQtyRemaining)
+		F.Intrinsic.Control.If(V.Global.sQtyRemaining.Long,<>,V.Local.iErrorCalc)
+			F.Intrinsic.String.Concat(V.Global.sQtyRemaining," serial number(s) can be added to this Sales Order Line.  Records were created prior to this warranty for this Sales Order Line. The amount of serial numbers created prior to do not exceed the order qty.",V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"GAB Validation")
+			F.Intrinsic.Control.ExitSub
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+'Remove Comma at end of Array
+F.Intrinsic.String.Len(V.Global.sCreateNew,V.Local.iCreateNew)
+F.Intrinsic.Math.Sub(V.Local.iCreateNew,1,V.Local.iCreateNew)
+F.Intrinsic.String.Left(V.Global.sCreateNew,V.Local.iCreateNew,V.Global.sCreateNew)
+'========================================
+
+'Add serial numbers not assigned to flexgrid
+F.Intrinsic.String.Split(V.Global.sCreateNew,",",V.Global.sCreateNew)
+Gui.SS_Form1.gsflexgrid1.Visible(False)
+F.Intrinsic.Control.For(V.Local.i,V.Global.sCreateNew.LBound,V.Global.sCreateNew.UBound,1)
+	F.Intrinsic.Math.Add(V.Local.iR,1,V.Local.iR)
+	F.Intrinsic.Math.Sub(V.Local.iR,1,V.Local.iRow)
+	Gui.SS_Form1.gsflexgrid1.Rows(V.Local.iR)
+	Gui.SS_Form1.gsflexgrid1.TextMatrix(0,V.Local.iRow,V.Global.sCreateNew(v.Local.i))
+	Gui.SS_Form1.gsflexgrid1.TextMatrix(1,V.Local.iRow,"N")
+	Gui.SS_Form1.gsflexgrid1.ApplyStyle(V.Local.iRow,1)
+F.Intrinsic.Control.Next(V.Local.i)
+Gui.SS_Form1.gsflexgrid1.Visible(True)
+'==================================================
+
+Gui.SS_Form1.cmdSave.Enabled(True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CreateNewSerial_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.CreateNewSerial.End
+
+
+program.sub.gsflexgrid1_commandclick.start
+V.Local.iRow.Declare(Long)
+
+'Delete row from flexgrid
+F.Intrinsic.Math.Sub(V.Args.Key,1,V.Local.iRow)
+Gui.SS_Form1.gsflexgrid1.DeleteRow(v.Local.iRow)
+
+program.sub.gsflexgrid1_commandclick.end
+
+
+program.sub.cmduser_click.start
+Gui.Form3..Show
+
+
+program.sub.cmduser_click.end
+
+
+program.sub.cmdOkuser_click.start
+Gui.Form3.gsflexUser.Commit
+Gui.Form3..Visible(False)
+
+program.sub.cmdOkuser_click.end
+
+
+program.sub.cmd_txtwarrantyid_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtwarrantyid_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+V.Local.sSQL.Declare(String)
+V.Local.sCol.Declare(String)
+V.Local.sColW.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.String.Concat("Select DISTINCT(PLAN_ID), ID FROM GCG_3315__PLANID_USRFLD Where ID = '1' Order BY PLAN_ID","",V.Local.sSQL)
+F.Intrinsic.String.Split("Warranty Plan ID*!*ID","*!*",V.Local.sCol)
+'Split Column widths into an array
+F.Intrinsic.String.Split("3000*!*0","*!*",V.Local.sColW)
+
+'Enter prompt (VAR3), e.g., "Selct a part"
+F.Intrinsic.UI.Browser("Select a Warranty","CON",V.Local.sSQL,V.Local.sCol,V.Local.sColW,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtWarrantyID.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.CallSub(Poplabels)
+Gui.SS_Form1.cmdUser.Enabled(True)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtwarrantyid_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_txtwarrantyid_click.end
+
+
+Program.Sub.UnloadUser.Start
+Gui.Form3..Visible(False)
+
+Program.Sub.UnloadUser.End
+
+
+Program.Sub.ClearAll.Start
+Gui.SS_Form1.txtAddress1.Text("")
+Gui.SS_Form1.txtAddress2.Text("")
+Gui.SS_Form1.txtCity.Text("")
+Gui.SS_Form1.txtNameF.Text("")
+Gui.SS_Form1.txtNameL.Text("")
+Gui.SS_Form1.txtOrderLn.Text("")
+Gui.SS_Form1.txtOrderNo.Text("")
+Gui.SS_Form1.txtPartNo.Text("")
+Gui.SS_Form1.txtPhoneH.Text("")
+Gui.SS_Form1.txtPhoneW.Text("")
+Gui.SS_Form1.txtPrefix.Text("")
+Gui.SS_Form1.txtSerialEnd.Text("")
+Gui.SS_Form1.txtSerialStart.Text("")
+Gui.SS_Form1.txtState.Text("")
+Gui.SS_Form1.txtWarrantyID.Text("")
+Gui.SS_Form1.txtZip.Text("")
+Gui.SS_Form1.gsflexgrid1.Rows(1)
+Gui.Form3.gsflexUser.Rows(1)
+
+Program.Sub.ClearAll.End
+
+
+Program.Sub.QtyCheck.Start
+F.Intrinsic.Control.SetErrorHandler("QtyCheck_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.stemp.Declare(String)
+V.Local.sOrderNo.Declare(String)
+
+F.Intrinsic.String.LPad(V.Screen.SS_Form1!txtOrderNo.Text,0,7,V.Local.sOrderNo)
+F.Intrinsic.String.LPad(V.Screen.SS_Form1!txtOrderLn.Text,0,3,V.Local.sTemp)
+'F.Intrinsic.String.RPad(V.Local.sTemp,0,1,V.Local.sTemp)
+V.Global.iCount.Set(0)
+F.Intrinsic.String.Concat("Select * From GCG_3315__Warranty_Gen Where Order_No = '",V.Local.sOrderNo,"' and Order_line = '",V.Local.stemp,"'",V.Local.sSQL)
+F.ODBC.Connection!con.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+		F.Intrinsic.Math.Add(V.Global.iCount,1,V.Global.iCount)
+		F.ODBC.con!rst.MoveNext
+	F.Intrinsic.Control.Loop
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("QtyCheck_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.QtyCheck.End
+
+
+Program.Sub.FlexBuildUser.Start
+F.Intrinsic.Control.SetErrorHandler("FlexBuildUser_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.Form3.gsflexUser.Rows(2)
+Gui.Form3.gsflexUser.Cols(3)
+Gui.Form3.gsflexUser.TextMatrix(0,0,"ID")
+Gui.Form3.gsflexUser.ColWidth(0,0)
+Gui.Form3.gsflexUser.TextMatrix(1,0,"Field")
+Gui.Form3.gsflexUser.ColWidth(1,4000)
+Gui.Form3.gsflexUser.TextMatrix(2,0,"")
+Gui.Form3.gsflexUser.ColWidth(2,4500)
+Gui.Form3.gsflexUser.FixedRows(1)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("FlexBuildUser_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Gen.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.FlexBuildUser.End
+
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Warranty_Gen$}$ERIC$}$11/14/2012
+${$1$}$$}$$}$1$}$12410$}$OES0201I-SCRIPT-1-HOOK$}$1/9/2013 1:36:22 PM$}$(Program: ORD201; Screen: OES0201I)
+
+${$1$}$$}$$}$0$}$12010$}$OES0201I-POPULATE-HOOK$}$1/9/2013 1:36:04 PM$}$(Program: ORD201; Screen: OES0201I)
+
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$Quote 3849
+Warranty Genertation portion
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Serial Range Entry
+SS_Form1.CTRL{{NAME::txtSerialStart\\TYPE::2\\CAPTION::Serial Start\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::txtSerialEnd\\TYPE::2\\CAPTION::Serial End\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::cmdSerialAdd\\TYPE::5\\CAPTION::Add\\GROUP::1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
