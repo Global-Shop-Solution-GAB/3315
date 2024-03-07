@@ -1,0 +1,1089 @@
+Program.Sub.ScreenSU.Start
+gui.F_Payments..create
+gui.F_Payments..caption("Warranty Payment Processing")
+gui.F_Payments..size(12285,8040)
+gui.F_Payments..position(0,0)
+gui.F_Payments..event(unload,f_payments_unload)
+gui.F_Payments..alwaysontop(False)
+gui.F_Payments..fontname("Arial")
+gui.F_Payments..fontsize(8)
+gui.F_Payments..forecolor(0)
+gui.F_Payments..fontstyle(,,,,)
+gui.F_Payments..BackColor(-2147483633)
+gui.F_Payments..controlbox(True)
+gui.F_Payments..maxbutton(False)
+gui.F_Payments..minbutton(False)
+gui.F_Payments..mousepointer(0)
+gui.F_Payments..moveable(True)
+gui.F_Payments..sizeable(False)
+gui.F_Payments..ShowInTaskBar(True)
+gui.F_Payments..titlebar(True)
+gui.F_Payments.gsfgPayments.create(gsflexgrid)
+gui.F_Payments.gsfgPayments.FixedRows(0)
+gui.F_Payments.gsfgPayments.FixedCols(0)
+gui.F_Payments.gsfgPayments.visible(True)
+gui.F_Payments.gsfgPayments.size(11955,6810)
+gui.F_Payments.gsfgPayments.zorder(0)
+gui.F_Payments.gsfgPayments.position(100,200)
+gui.F_Payments.gsfgPayments.enabled(True)
+gui.F_Payments.gsfgPayments.event(commandclick,gsfgpayments_commandclick)
+gui.F_Payments.gsfgPayments.event(checkclick,gsfgpayments_checkclick)
+gui.F_Payments.cmdSavePay.create(button)
+gui.F_Payments.cmdSavePay.caption("Save")
+gui.F_Payments.cmdSavePay.visible(True)
+gui.F_Payments.cmdSavePay.size(855,375)
+gui.F_Payments.cmdSavePay.zorder(0)
+gui.F_Payments.cmdSavePay.position(200,7100)
+gui.F_Payments.cmdSavePay.enabled(True)
+gui.F_Payments.cmdSavePay.fontname("Arial")
+gui.F_Payments.cmdSavePay.fontsize(8)
+gui.F_Payments.cmdSavePay.event(click,cmdsavepay_click)
+
+
+gui.SS_Form1..create
+gui.SS_Form1..caption("Warranty Claim Management")
+gui.SS_Form1..size(7820,6690)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_txtClaimId.create(label,"Claim ID",True,1800,200,1,100,100,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtClaimId.create(textbox,"",True,5400,330,0,100,300,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_ddlClaimType.create(label,"Claim Type",True,1800,200,1,100,705,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_dtpClaimDate.create(label,"Claim Date",True,1800,200,1,3785,705,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpClaimDate.create(datepicker)
+gui.SS_Form1.dtpClaimDate.visible(True)
+gui.SS_Form1.dtpClaimDate.size(3600,345)
+gui.SS_Form1.dtpClaimDate.zorder(0)
+gui.SS_Form1.dtpClaimDate.position(3785,905)
+gui.SS_Form1.dtpClaimDate.enabled(False)
+gui.SS_Form1.dtpClaimDate.checkbox(False)
+gui.SS_Form1.lbl_txtSerialNum.create(label,"Serial",True,1800,200,1,100,1305,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtSerialNum.create(textbox,"",True,5400,330,0,100,1505,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtOrder.create(label,"Order",True,1800,200,1,100,1905,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtOrder.create(textbox,"",True,1800,330,0,100,2105,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtLine.create(label,"Line",True,1800,200,1,1985,1905,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtLine.create(textbox,"",True,1800,330,0,1985,2105,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtPart.create(label,"Part",True,1800,200,1,3870,1905,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPart.create(textbox,"",True,3600,330,0,3870,2105,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtWarrantyPrefix.create(label,"Prefix",True,1800,200,1,100,2505,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtWarrantyPrefix.create(textbox,"",True,1800,330,0,100,2705,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtWarrantyID.create(label,"Warranty",True,1800,200,1,1985,2505,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtWarrantyID.create(textbox,"",True,1800,330,0,1985,2705,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_dtpPurchaseDate.create(label,"Purchase Date",True,1800,200,1,3870,2505,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpPurchaseDate.create(datepicker)
+gui.SS_Form1.dtpPurchaseDate.visible(True)
+gui.SS_Form1.dtpPurchaseDate.size(3600,345)
+gui.SS_Form1.dtpPurchaseDate.zorder(0)
+gui.SS_Form1.dtpPurchaseDate.position(3870,2705)
+gui.SS_Form1.dtpPurchaseDate.enabled(False)
+gui.SS_Form1.dtpPurchaseDate.checkbox(False)
+gui.SS_Form1.lbl_txtFirstName.create(label,"First Name",True,1800,200,1,100,3105,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtFirstName.create(textbox,"",True,3600,330,0,100,3305,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtLastName.create(label,"Last Name",True,1800,200,1,3785,3105,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtLastName.create(textbox,"",True,3600,330,0,3785,3305,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtAddress1.create(label,"Address 1",True,1800,200,1,100,3705,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtAddress1.create(textbox,"",True,3600,330,0,100,3905,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtAddress2.create(label,"Address 2",True,1800,200,1,3785,3705,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtAddress2.create(textbox,"",True,3600,330,0,3785,3905,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtCity.create(label,"City",True,1800,200,1,100,4305,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtCity.create(textbox,"",True,3600,330,0,100,4505,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtState.create(label,"State",True,1800,200,1,3785,4305,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtState.create(textbox,"",True,1800,330,0,3785,4505,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtZip.create(label,"Zip",True,1800,200,1,5670,4305,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtZip.create(textbox,"",True,1800,330,0,5670,4505,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtHomePhone.create(label,"Home Phone",True,1800,200,1,100,4905,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtHomePhone.create(textbox,"",True,3600,330,0,100,5105,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl_txtWorkPhone.create(label,"Work Phone",True,1800,200,1,3785,4905,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtWorkPhone.create(textbox,"",True,3600,330,0,3785,5105,False,0,Arial,8,16777215,1)
+gui.SS_Form1.txtEstimatedAmount.create(textbox,"",True,3600,330,0,100,5705,False,0,Arial,8,16777215,1)
+gui.SS_Form1.lbl21.create(label,"Estimated Amount",True,1935,255,1,115,5505,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtClaimType.create(textbox,"",True,3600,300,0,100,905,False,0,Arial,8,-2147483643,1)
+
+
+gui.SS_Form2..create
+gui.SS_Form2..caption("Claim Comments")
+gui.SS_Form2..size(7815,4005)
+gui.SS_Form2..position(0,0)
+gui.SS_Form2..event(unload,ss_form2_unload)
+gui.SS_Form2..alwaysontop(False)
+gui.SS_Form2..fontname("Arial")
+gui.SS_Form2..fontsize(8)
+gui.SS_Form2..forecolor(0)
+gui.SS_Form2..fontstyle(,,,,)
+gui.SS_Form2..BackColor(-2147483633)
+gui.SS_Form2..controlbox(True)
+gui.SS_Form2..maxbutton(True)
+gui.SS_Form2..minbutton(True)
+gui.SS_Form2..mousepointer(0)
+gui.SS_Form2..moveable(True)
+gui.SS_Form2..sizeable(True)
+gui.SS_Form2..ShowInTaskBar(True)
+gui.SS_Form2..titlebar(True)
+gui.SS_Form2.gsflxComments.create(gsflexgrid)
+gui.SS_Form2.gsflxComments.FixedRows(0)
+gui.SS_Form2.gsflxComments.FixedCols(0)
+gui.SS_Form2.gsflxComments.visible(True)
+gui.SS_Form2.gsflxComments.size(7365,2790)
+gui.SS_Form2.gsflxComments.zorder(0)
+gui.SS_Form2.gsflxComments.position(90,100)
+gui.SS_Form2.gsflxComments.enabled(True)
+gui.SS_Form2.gsflxComments.event(mousedown,gsflxcomments_mousedown)
+gui.SS_Form2.cmdNewNote.create(button)
+gui.SS_Form2.cmdNewNote.caption("New")
+gui.SS_Form2.cmdNewNote.visible(True)
+gui.SS_Form2.cmdNewNote.size(855,375)
+gui.SS_Form2.cmdNewNote.zorder(0)
+gui.SS_Form2.cmdNewNote.position(100,3000)
+gui.SS_Form2.cmdNewNote.enabled(True)
+gui.SS_Form2.cmdNewNote.fontname("Arial")
+gui.SS_Form2.cmdNewNote.fontsize(8)
+gui.SS_Form2.cmdNewNote.event(click,cmdnewnote_click)
+
+
+gui.SS_Form3..create
+gui.SS_Form3..caption("Claim Comments")
+gui.SS_Form3..size(5370,3240)
+gui.SS_Form3..position(0,0)
+gui.SS_Form3..event(unload,ss_form3_unload)
+gui.SS_Form3..alwaysontop(False)
+gui.SS_Form3..fontname("Arial")
+gui.SS_Form3..fontsize(8)
+gui.SS_Form3..forecolor(0)
+gui.SS_Form3..fontstyle(,,,,)
+gui.SS_Form3..BackColor(-2147483633)
+gui.SS_Form3..controlbox(True)
+gui.SS_Form3..maxbutton(True)
+gui.SS_Form3..minbutton(True)
+gui.SS_Form3..mousepointer(0)
+gui.SS_Form3..moveable(True)
+gui.SS_Form3..sizeable(True)
+gui.SS_Form3..ShowInTaskBar(True)
+gui.SS_Form3..titlebar(True)
+gui.SS_Form3.mltxtClaimNotes.create(textboxm)
+gui.SS_Form3.mltxtClaimNotes.text("")
+gui.SS_Form3.mltxtClaimNotes.visible(True)
+gui.SS_Form3.mltxtClaimNotes.size(4935,2565)
+gui.SS_Form3.mltxtClaimNotes.zorder(0)
+gui.SS_Form3.mltxtClaimNotes.position(45,70)
+gui.SS_Form3.mltxtClaimNotes.enabled(True)
+gui.SS_Form3.mltxtClaimNotes.alignment(0)
+gui.SS_Form3.mltxtClaimNotes.fontname("Arial")
+gui.SS_Form3.mltxtClaimNotes.fontsize(8)
+gui.SS_Form3.mltxtClaimNotes.BackColor(-2147483643)
+
+
+gui.SS_Form4..create
+gui.SS_Form4..caption("New Comment")
+gui.SS_Form4..size(5370,3540)
+gui.SS_Form4..position(0,0)
+gui.SS_Form4..event(unload,ss_form4_unload)
+gui.SS_Form4..alwaysontop(False)
+gui.SS_Form4..fontname("Arial")
+gui.SS_Form4..fontsize(8)
+gui.SS_Form4..forecolor(0)
+gui.SS_Form4..fontstyle(,,,,)
+gui.SS_Form4..BackColor(-2147483633)
+gui.SS_Form4..controlbox(True)
+gui.SS_Form4..maxbutton(True)
+gui.SS_Form4..minbutton(True)
+gui.SS_Form4..mousepointer(0)
+gui.SS_Form4..moveable(True)
+gui.SS_Form4..sizeable(True)
+gui.SS_Form4..ShowInTaskBar(True)
+gui.SS_Form4..titlebar(True)
+gui.SS_Form4.mltxtNewNotes.create(textboxm)
+gui.SS_Form4.mltxtNewNotes.text("")
+gui.SS_Form4.mltxtNewNotes.visible(True)
+gui.SS_Form4.mltxtNewNotes.size(4935,2445)
+gui.SS_Form4.mltxtNewNotes.zorder(0)
+gui.SS_Form4.mltxtNewNotes.position(110,110)
+gui.SS_Form4.mltxtNewNotes.enabled(True)
+gui.SS_Form4.mltxtNewNotes.alignment(0)
+gui.SS_Form4.mltxtNewNotes.fontname("Arial")
+gui.SS_Form4.mltxtNewNotes.fontsize(8)
+gui.SS_Form4.mltxtNewNotes.BackColor(-2147483643)
+gui.SS_Form4.cmdSave.create(button)
+gui.SS_Form4.cmdSave.caption("Save")
+gui.SS_Form4.cmdSave.visible(True)
+gui.SS_Form4.cmdSave.size(855,375)
+gui.SS_Form4.cmdSave.zorder(0)
+gui.SS_Form4.cmdSave.position(100,2600)
+gui.SS_Form4.cmdSave.enabled(True)
+gui.SS_Form4.cmdSave.fontname("Arial")
+gui.SS_Form4.cmdSave.fontsize(8)
+gui.SS_Form4.cmdSave.event(click,cmdsave_click)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.iClaimID.Declare(Long,0)
+Variable.UDT.uCloseClaims.Define("Cliam_ID",Long)
+Variable.uGlobal.uCloseClaim.Declare("uCloseClaims")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+F.Intrinsic.Control.CallSub(Buildgrid)
+F.Intrinsic.Control.CallSub(Loadgrid)
+Gui.F_Payments..Show
+
+Program.Sub.Main.End
+
+Program.Sub.BuildGrid.Start
+F.Intrinsic.Control.SetErrorHandler("BuildGrid_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.F_Payments.gsfgPayments.Rows(1)
+Gui.F_Payments.gsfgPayments.Rows(2)
+Gui.F_Payments.gsfgPayments.Cols(11)
+Gui.F_Payments.gsfgPayments.FixedRows(1)
+Gui.F_Payments.gsfgPayments.SetProperty("enter",1)
+
+Gui.F_Payments.gsfgPayments.TextMatrix(0,0,"Claim ID")
+Gui.F_Payments.gsfgPayments.TextMatrix(1,0,"Request Date")
+Gui.F_Payments.gsfgPayments.TextMatrix(2,0,"Requested By")
+Gui.F_Payments.gsfgPayments.TextMatrix(3,0,"Request Amount")
+Gui.F_Payments.gsfgPayments.TextMatrix(4,0,"Approval Amount")
+Gui.F_Payments.gsfgPayments.TextMatrix(5,0,"Approval")
+Gui.F_Payments.gsfgPayments.TextMatrix(6,0,"Close")
+
+Gui.F_Payments.gsfgPayments.BuildStyle(1,0,"Format","Alignment",2)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,1,"Format","Alignment",2)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,2,"Format","Alignment",2)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,3,"Format","Alignment",6)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,4,"Format","Alignment",6)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,5,"Format","Alignment",2)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,6,"Format","Alignment",2)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,7,"Format","Alignment",4)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,8,"Format","Alignment",4)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,9,"Format","Alignment",4)
+
+Gui.F_Payments.gsfgPayments.BuildStyle(1,0,"Type","Locked",True)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,1,"Type","Locked",True)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,2,"Type","Locked",True)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,3,"Type","Locked",True)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,4,"Type","Locked",False)
+'Gui.F_Payments.gsfgPayments.BuildStyle(1,5,"Type","Locked",False)
+'Gui.F_Payments.gsfgPayments.BuildStyle(1,6,"Type","Locked",False)
+'Gui.F_Payments.gsfgPayments.BuildStyle(1,7,"Type","Locked",False)
+'Gui.F_Payments.gsfgPayments.BuildStyle(1,8,"Type","Locked",False)
+'Gui.F_Payments.gsfgPayments.BuildStyle(1,9,"Type","Locked",False)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,10,"Type","Locked",True)
+
+Gui.F_Payments.gsfgPayments.BuildStyle(1,3,"Format","Numeric",True)
+Gui.F_Payments.gsfgPayments.BuildStyle(1,4,"Format","Numeric",True)
+
+Gui.F_Payments.gsfgPayments.BuildStyle(1,5,"Type","DropDownList","Approve*!*Deny")
+
+Gui.F_Payments.gsfgPayments.BuildStyle(1,6,"Type","Checkbox","")
+
+Gui.F_Payments.gsfgPayments.BuildStyle(1,7,"Type","Command","View")
+Gui.F_Payments.gsfgPayments.BuildStyle(1,8,"Type","Command","Docs")
+Gui.F_Payments.gsfgPayments.BuildStyle(1,9,"Type","Command","Comments")
+
+Gui.F_Payments.gsfgPayments.SetColumnPercentages(".085:.115:.115:.115:.115:.1:.05:.1:.1:.1:.0")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("BuildGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.BuildGrid.End
+
+program.sub.f_payments_unload.start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+program.sub.f_payments_unload.end
+
+Program.Sub.LoadGrid.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGrid_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.iRows.Declare(Long)
+V.Local.iRowOrd.Declare(Long)
+
+V.Local.iRows.Set(1)
+V.Local.sSql.Set("Select * From GCG_3315__Pay_Request ORDER BY Claim_ID, Request_Date")
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	V.Local.iRowOrd.Set(V.Local.iRows)
+	F.Intrinsic.Math.Add(V.Local.iRows,1,V.Local.iRows)
+	Gui.F_Payments.gsfgPayments.Rows(V.Local.iRows)
+	Gui.F_Payments.gsfgPayments.TextMatrix(0,V.Local.iRowOrd,V.ODBC.con!rst.FieldValLong!Claim_ID)
+	Gui.F_Payments.gsfgPayments.TextMatrix(1,V.Local.iRowOrd,V.ODBC.con!rst.FieldVal!Request_Date)
+	Gui.F_Payments.gsfgPayments.TextMatrix(2,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!Requested_By)
+	Gui.F_Payments.gsfgPayments.TextMatrix(3,V.Local.iRowOrd,V.ODBC.con!rst.FieldValFloat!Request_Amount)
+	Gui.F_Payments.gsfgPayments.TextMatrix(4,V.Local.iRowOrd,0)
+	Gui.F_Payments.gsfgPayments.TextMatrix(5,V.Local.iRowOrd,"Approve")
+	Gui.F_Payments.gsfgPayments.TextMatrix(6,V.Local.iRowOrd,0)
+	Gui.F_Payments.gsfgPayments.TextMatrix(10,V.Local.iRowOrd,V.ODBC.con!rst.FieldValLong!Request_ID)
+	Gui.F_Payments.gsfgPayments.ApplyStyle(V.Local.iRowOrd,1)
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadGrid_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadGrid.End
+
+program.sub.gsfgpayments_commandclick.start
+F.Intrinsic.Control.SetErrorHandler("gsfgpayments_commandclick_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRow.Declare(String)
+V.Local.sRowVals.Declare(String)
+V.Local.iRet.Declare(Long)
+
+'Splitting row to get claim ID
+Gui.F_Payments.gsfgPayments.ReadRow(V.Args.Key,V.Local.sRow)
+F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowVals)
+V.Global.iClaimID.Set(V.Local.sRowVals(0).Long)
+F.Intrinsic.Control.SelectCase(V.Args.Column)
+	F.Intrinsic.Control.Case(7)
+		'View Claim
+		F.Intrinsic.Control.CallSub(Loadclaim)
+		Gui.F_Payments..Enabled(False)
+		Gui.SS_Form1..Show
+	F.Intrinsic.Control.Case(8)
+		'View Document Control
+		F.Global.DocumentControl.Invoke(V.Local.sRowVals(0).Long,"2010","Warranty Claims",V.Local.iRet)
+	F.Intrinsic.Control.Case(9)
+		'Comments
+		F.Intrinsic.Control.CallSub(Buildgridcomments)
+		F.Intrinsic.Control.CallSub(Loadgridcomments)
+		Gui.F_Payments..Enabled(False)
+		Gui.SS_Form2..Show
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("gsfgpayments_commandclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.gsfgpayments_commandclick.end
+
+Program.Sub.BuildGridComments.Start
+F.Intrinsic.Control.SetErrorHandler("BuildGridComments_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form2.gsflxComments.Rows(1)
+Gui.SS_Form2.gsflxComments.Rows(2)
+Gui.SS_Form2.gsflxComments.Cols(3)
+Gui.SS_Form2.gsflxComments.FixedRows(1)
+Gui.SS_Form2.gsflxComments.ColWidth(0,4000)
+Gui.SS_Form2.gsflxComments.ColWidth(1,1000)
+Gui.SS_Form2.gsflxComments.ColWidth(2,1000)
+
+Gui.SS_Form2.gsflxComments.TextMatrix(0,0,"Comments")
+Gui.SS_Form2.gsflxComments.TextMatrix(1,0,"Entered By")
+Gui.SS_Form2.gsflxComments.TextMatrix(2,0,"Date Entered")
+
+Gui.SS_Form2.gsflxComments.BuildStyle(1,0,"Type","Locked",True)
+Gui.SS_Form2.gsflxComments.BuildStyle(1,0,"Format","Alignment",2)
+Gui.SS_Form2.gsflxComments.BuildStyle(1,1,"Type","Locked",True)
+Gui.SS_Form2.gsflxComments.BuildStyle(1,1,"Format","Alignment",2)
+Gui.SS_Form2.gsflxComments.BuildStyle(1,2,"Type","Locked",True)
+Gui.SS_Form2.gsflxComments.BuildStyle(1,2,"Format","Alignment",2)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("BuildGridComments_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.BuildGridComments.End
+
+Program.Sub.LoadGridComments.Start
+F.Intrinsic.Control.SetErrorHandler("LoadGridComments_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.iRows.Declare(Long)
+V.Local.iRowOrd.Declare(Long)
+
+V.Local.iRows.Set(1)
+F.Intrinsic.String.Concat("Select * From GCG_3315__CLAIM_NOTES Where Claim_ID = ",V.Global.iClaimID,"  Order By Note_ID, Date_Entered",V.Local.sSql)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.Math.Add(V.Local.iRows,1,V.Local.iRows)
+	F.Intrinsic.Math.Sub(V.Local.iRows,1,V.Local.iRowOrd)
+	Gui.SS_Form2.gsflxComments.Rows(V.Local.iRows)
+	Gui.SS_Form2.gsflxComments.TextMatrix(0,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!DESC_NOTES)
+	Gui.SS_Form2.gsflxComments.TextMatrix(1,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!USER_ID)
+	Gui.SS_Form2.gsflxComments.TextMatrix(2,V.Local.iRowOrd,V.ODBC.con!rst.FieldValTrim!Date_Entered)
+	Gui.SS_Form2.gsflxComments.ApplyStyle(V.Local.iRowOrd,1)
+	F.ODBC.con!rst.MoveNext
+F.Intrinsic.Control.Loop
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadGridComments_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadGridComments.End
+
+program.sub.ss_form2_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form2_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.F_Payments..Enabled(True)
+Gui.SS_Form2..Visible(False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form2_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.ss_form2_unload.end
+
+program.sub.gsflxcomments_mousedown.start
+F.Intrinsic.Control.SetErrorHandler("gsflxcomments_mousedown_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sText.Declare(String)
+
+F.Intrinsic.Control.If(V.Args.MouseCol,=,0)
+F.Intrinsic.Control.AndIf(V.Args.MouseRow,>,0)
+	Gui.SS_Form2..Enabled(False)
+	Gui.SS_Form2.gsflxComments.GetTextMatrix(0,V.Args.MouseRow,V.Local.sText)
+	F.Intrinsic.Control.If(V.Local.sText,<>,"")
+		Gui.SS_Form3.mltxtClaimNotes.Text(V.Local.sText)
+		Gui.SS_Form3.mltxtClaimNotes.Enabled(False)
+		Gui.SS_Form3..Show
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("gsflxcomments_mousedown_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.gsflxcomments_mousedown.end
+
+program.sub.ss_form3_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form3_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form2..Enabled(True)
+Gui.SS_Form3..Visible(False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form3_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.ss_form3_unload.end
+
+program.sub.cmdnewnote_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdnewnote_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form2..Enabled(False)
+Gui.SS_Form4..Show
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdnewnote_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdnewnote_click.end
+
+program.sub.ss_form4_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form4_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form2..Enabled(True)
+F.Intrinsic.Control.CallSub(Buildgridcomments)
+F.Intrinsic.Control.CallSub(Loadgridcomments)
+Gui.SS_Form4..Visible(False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form4_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.ss_form4_unload.end
+
+program.sub.cmdsave_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsave_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iClaimid.Declare(Long)
+V.Local.iNoteID.Declare(Long)
+V.Local.iUserId.Declare(Long)
+V.Local.sSQL.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.SS_Form4!mltxtNewNotes.Text,<>,"")
+	F.ODBC.Connection!con.GetID("GCG_3315__CLAIM_NOTES","NOTE_ID",True,V.Local.iNoteID)
+	F.Intrinsic.String.Concat("Select * From GCG_3315__CLAIM_NOTES WHERE Claim_ID = ",V.Global.iClaimID," And Note_ID = ",V.local.inoteID,V.Local.sSQL)
+	F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSQL)
+	'no records have been found
+	F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+		F.ODBC.con!rst.AddNew
+		F.ODBC.con!rst.Set!Note_ID(V.Local.iNoteID)
+		F.ODBC.con!rst.Set!Claim_ID(V.Global.iClaimID)
+		F.ODBC.con!rst.Set!Desc_Notes(V.Screen.SS_Form4!mltxtNewNotes.Text)
+		F.ODBC.con!rst.Set!User_ID(V.Caller.User)
+		F.ODBC.con!rst.Set!Date_Entered(V.Ambient.Now)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Close
+	Gui.SS_Form4.mltxtNewNotes.Text("")
+	F.Intrinsic.Control.CallSub(Ss_form4_unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsave_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdsave_click.end
+
+Program.Sub.LoadClaim.Start
+F.Intrinsic.Control.SetErrorHandler("LoadClaim_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.sClaimType.Declare(String)
+
+F.Intrinsic.String.Concat("Select * From GCG_3315__Warranty_Claim Where Claim_ID = ",V.Global.iClaimID,V.Local.sSQL)
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("Claim missing or deleted!","Claim Missing/Deleted")
+F.Intrinsic.Control.Else
+	Gui.SS_Form1.txtClaimId.Text(V.Global.iClaimID)
+
+	F.Intrinsic.String.Concat("Select Claim_Type_ID, Claim_Type_Desc From GCG_3315__Claim_Types Where Claim_Type_ID ='",V.ODBC.con!rst.FieldValTrim!Claim_Type,"'",V.Local.sSQL)
+	F.ODBC.Connection!con.OpenLocalRecordsetRO("rstType",V.Local.sSql)
+	F.Intrinsic.Control.If(V.ODBC.con!rstType.EOF,=,False)
+		F.Intrinsic.String.Concat(V.odbc.con!rsttype.fieldvaltrim!Claim_Type_ID,"-",V.odbc.con!rsttype.fieldvaltrim!Claim_Type_Desc,V.local.sClaimType)
+		Gui.SS_Form1.txtClaimType.Text(V.Local.sClaimType)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox("Claim type missing or deleted!","Claim type Missing/Deleted")
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rstType.Close
+
+	Gui.SS_Form1.dtpClaimDate.Value(V.ODBC.con!rst.FieldVal!Claim_Date)
+	Gui.SS_Form1.txtSerialNum.Text(V.ODBC.con!rst.FieldValTrim!Serial)
+	Gui.SS_Form1.txtEstimatedAmount.Text(V.ODBC.con!rst.FieldValFloat!Est_Amount)
+	Gui.SS_Form1.txtOrder.Text(V.ODBC.con!rst.FieldValTrim!Order_NO)
+	Gui.SS_Form1.txtLine.Text(V.ODBC.con!rst.FieldValTrim!Order_Line)
+	Gui.SS_Form1.txtPart.Text(V.ODBC.con!rst.FieldValTrim!Part)
+	Gui.SS_Form1.txtWarrantyPrefix.Text(V.ODBC.con!rst.FieldValTrim!Prefix)
+	Gui.SS_Form1.txtWarrantyID.Text(V.ODBC.con!rst.FieldValTrim!Warranty_Plan_ID)
+	Gui.SS_Form1.txtFirstName.Text(V.ODBC.con!rst.FieldValTrim!firstname)
+	Gui.SS_Form1.txtLastName.Text(V.ODBC.con!rst.FieldValTrim!lastname)
+	Gui.SS_Form1.txtAddress1.Text(V.ODBC.con!rst.FieldValTrim!Address1)
+	Gui.SS_Form1.txtAddress2.Text(V.ODBC.con!rst.FieldValTrim!Address2)
+	Gui.SS_Form1.txtCity.Text(V.ODBC.con!rst.fieldvaltrim!City)
+	Gui.SS_Form1.txtState.Text(V.ODBC.con!rst.FieldValTrim!State)
+	Gui.SS_Form1.txtZip.Text(V.ODBC.con!rst.FieldValTrim!ZiP)
+	Gui.SS_Form1.txtHomePhone.Text(V.ODBC.con!rst.FieldValTrim!phone)
+	Gui.SS_Form1.txtWorkPhone.Text(V.ODBC.con!rst.FieldValTrim!Work_Phone)
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadClaim_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadClaim.End
+
+program.sub.ss_form1_unload.start
+F.Intrinsic.Control.SetErrorHandler("ss_form1_unload_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.F_Payments..Enabled(True)
+Gui.SS_Form1.txtClaimId.Text("")
+Gui.SS_Form1.txtClaimType.Text("")
+Gui.SS_Form1.dtpClaimDate.Value(V.Ambient.Date)
+Gui.SS_Form1.txtEstimatedAmount.Text("")
+Gui.SS_Form1.txtSerialNum.Text("")
+Gui.SS_Form1.txtOrder.Text("")
+Gui.SS_Form1.txtLine.Text("")
+Gui.SS_Form1.txtPart.Text("")
+'Gui.SS_Form1.txtWarrantyPrefix.Text(v.ODBC.conx!rstPop.FieldValTrim!Warranty_PREFIX)
+Gui.SS_Form1.txtWarrantyID.Text("")
+Gui.SS_Form1.txtFirstName.Text("")
+Gui.SS_Form1.txtLastName.Text("")
+Gui.SS_Form1.txtAddress1.Text("")
+Gui.SS_Form1.txtAddress2.Text("")
+Gui.SS_Form1.txtCity.Text("")
+Gui.SS_Form1.txtState.Text("")
+Gui.SS_Form1.txtZip.Text("")
+Gui.SS_Form1.txtHomePhone.Text("")
+Gui.SS_Form1.txtWorkPhone.Text("")
+Gui.SS_Form1..Visible(False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("ss_form1_unload_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.ss_form1_unload.end
+
+program.sub.cmdsavepay_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdsavepay_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iRet.Declare(Long)
+V.Local.i.Declare(Long)
+V.Local.iRows.Declare(Long)
+V.Local.sRow.Declare(String)
+V.Local.sRowVals.Declare(String)
+V.Local.iRowOrd.Declare(Long)
+V.Local.sSql.Declare(String)
+V.Local.iPayID.Declare(Long)
+V.Local.dDate.Declare(Date)
+V.Local.sVendor.Declare(String)
+V.Local.iVendorDec.Declare(Long)
+V.Local.sVendWrite.Declare(String)
+V.Local.sVendWriteFile.Declare(String)
+V.Local.sVendWriteVals.Declare(String)
+V.Local.sVendWriteLen.Declare(String)
+V.Local.sVendFile.Declare(String)
+V.Local.sAPFile.Declare(String)
+V.Local.sName.Declare(String)
+V.Local.sAPDate.Declare(String)
+V.Local.sExecute.Declare(String)
+V.Local.sAPWrite.Declare(String)
+V.Local.sAPWriteFile.Declare(String)
+V.Local.iBatchID.Declare(Long)
+V.Local.sBatchNum.Declare(String)
+V.Local.sInvoive.Declare(String)
+V.Local.fCheck.Declare(Float)
+V.Local.iNoteID.Declare(Long)
+V.Local.sMessage.Declare(String)
+V.Local.sGLAccount.Declare(String)
+
+F.Intrinsic.UI.Msgbox("Are you sure you want to process all payment requests?","Payment Requests",4,V.Local.iRet)
+V.uGlobal.uCloseClaim.Redim(-1,-1)
+F.Intrinsic.Control.If(V.Local.iRet,=,6)
+	V.Local.sVendWriteLen.Set("6*!*30*!*30*!*30*!*20*!*2*!*13*!*939")
+	F.Intrinsic.String.Split(V.Local.sVendWriteLen,"*!*",V.Local.sVendWriteLen)
+	F.Intrinsic.String.Concat(V.Caller.FilesDir,"\VENDOR.txt",V.Local.sVendFile)
+	F.Intrinsic.String.Concat(V.caller.FilesDir,"\APBatch_Upload.TXT",V.Local.sAPFile)
+
+	Gui.F_Payments.gsfgPayments.ReadRow(1,V.Local.sRow)
+	F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowVals)
+	F.Intrinsic.Control.If(V.Local.sRowVals(0),<>,"")
+		'Getting latest vendor ID used
+		V.Local.sSql.Set("Select VENDOR from VENDOR_MASTER where VENDOR >= 'A00000' Order By VENDOR")
+		F.ODBC.Connection!con.OpenLocalRecordsetRO("rstVend",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rstVend.EOF,=,True)
+			V.Local.sVendor.Set("A00000")
+		F.Intrinsic.Control.Else
+			V.Local.sVendor.Set(V.ODBC.con!rstVend.FieldValTrim!VENDOR)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rstVend.Close
+
+		'Creating Batch and Invoice date string
+		F.Intrinsic.String.Format(V.Ambient.Date,"MMDDYY",V.Local.sAPDate)
+
+		'Getting batch number
+		V.Local.sSql.Set("Select * From GCG_3315__Warranty_Batch")
+		F.ODBC.Connection!con.OpenLocalRecordsetRW("rstBatch",V.Local.sSql)
+		F.Intrinsic.Control.If(V.ODBC.con!rstBatch.EOF,=,True)
+			F.ODBC.con!rstBatch.AddNew
+			F.ODBC.con!rstBatch.Set!Batch_Num(1)
+			F.ODBC.con!rstBatch.Update
+			V.Local.iBatchID.Set(1)
+		F.Intrinsic.Control.Else
+			V.Local.iBatchID.Set(V.ODBC.con!rstBatch.FieldValLong!Batch_Num)
+			F.Intrinsic.Math.Add(V.Local.iBatchID,1,V.Local.iBatchID)
+			F.ODBC.con!rstBatch.Set!Batch_Num(V.Local.iBatchID)
+			F.ODBC.con!rstBatch.Update
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rstBatch.Close
+
+		F.Intrinsic.String.LPad(V.Local.iBatchID,"0",4,V.Local.sBatchNum)
+		F.Intrinsic.String.Concat("C",V.Local.sBatchNum,V.Local.sBatchNum)
+
+		V.Local.iRows.Set(V.Screen.F_Payments!gsfgPayments.Rows)
+		V.Local.sSql.Set("Select * from GCG_3315__Warranty_Pay")
+		F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSql)
+
+		F.Intrinsic.Control.For(V.Local.i,2,V.Local.iRows,1)
+
+			F.Intrinsic.Math.Sub(V.Local.i,1,V.Local.iRowOrd)
+			F.ODBC.Connection!con.GetID("GCG_3315__Warranty_Pay","Payment_ID",True,V.Local.iPayID)
+			Gui.F_Payments.gsfgPayments.ReadRow(V.Local.iRowOrd,V.Local.sRow)
+			F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowVals)
+
+			F.Intrinsic.Control.If(V.Local.sRowVals(5),=,"Deny")
+
+				F.ODBC.con!rst.AddNew
+				F.ODBC.con!rst.Set!Claim_ID(V.Local.sRowVals(0).Long)
+				F.ODBC.con!rst.Set!Request_ID(V.Local.sRowVals(10).Long)
+				F.ODBC.con!rst.Set!Payment_ID(V.Local.iPayID)
+				F.ODBC.con!rst.Set!Request_Date(V.Local.sRowVals(1).PervasiveDate)
+				V.Local.dDate.Set(V.Ambient.Date)
+				F.ODBC.con!rst.Set!Payment_Date(V.Local.dDate.PervasiveDate)
+				F.ODBC.con!rst.Set!Requested_By(V.Local.sRowVals(2).Trim)
+				F.ODBC.con!rst.Set!Approved_By(V.Caller.User)
+				F.ODBC.con!rst.Set!Vendor_ID("")
+				F.ODBC.con!rst.Set!AP_Batch("")
+				F.ODBC.con!rst.Set!AP_Invoice("")
+				F.ODBC.con!rst.Set!Check_Number(-1)
+				F.ODBC.con!rst.Set!Void(0)
+				F.ODBC.con!rst.Set!Request_Amount(V.Local.sRowVals(3).Float)
+				F.ODBC.con!rst.Set!Approval_Amount(0)
+				F.ODBC.con!rst.Set!Approved(0)
+				F.ODBC.con!rst.Update
+
+				'Closing claim and writing close claim comment
+				F.Intrinsic.Control.If(V.Local.sRowVals(6).Long,=,1)
+					F.Intrinsic.Control.CallSub(Addudt,"Claim",V.Local.sRowVals(0).Long)
+				F.Intrinsic.Control.EndIf
+
+				F.Intrinsic.String.Concat("Delete GCG_3315__Pay_Request where Request_ID = ",V.Local.sRowVals(10).Long,V.Local.sSql)
+				F.ODBC.Connection!con.Execute(V.Local.sSql)
+			F.Intrinsic.Control.Else
+
+				F.Intrinsic.Control.If(V.Local.sRowVals(4).Float,<>,0)
+					'Incrementing to next vendor ID
+					F.Intrinsic.String.ConvertHex2Dec(V.Local.sVendor,V.Local.iVendorDec)
+					F.Intrinsic.Math.Add(V.Local.iVendorDec,1,V.Local.iVendorDec)
+					F.Intrinsic.String.ConvertDec2Hex(V.Local.iVendorDec,V.Local.sVendor)
+
+					F.Intrinsic.String.Concat("Select * From GCG_3315__Warranty_Claim Where Claim_ID = ",V.Local.sRowVals(0).Long,V.Local.sSQL)
+					F.ODBC.Connection!con.OpenLocalRecordsetRW("rstClaim",V.Local.sSql)
+					F.Intrinsic.Control.If(V.ODBC.con!rstClaim.EOF,=,False)
+						'Getting GL Account to use
+						V.Local.dDate.Set(V.Ambient.Date)
+						F.Intrinsic.String.Concat("Select GL_Account from GCG_3315__Warranty_GL where Warranty_Plan_ID = '",V.ODBC.con!rstClaim.FieldValTrim!Warranty_Plan_ID,"' and Prefix = '",V.ODBC.con!rstClaim.FieldValTrim!Prefix,"' and Start_Date <= '",V.Local.dDate.PervasiveDate,"' and Stop_Date >= '",V.Local.dDate.PervasiveDate,"'",V.Local.sSql)
+						F.ODBC.Connection!con.OpenLocalRecordsetRO("rstGL",V.Local.sSql)
+						F.Intrinsic.Control.If(V.ODBC.con!rstGL.EOF,=,True)
+							F.Intrinsic.String.Concat("GL Account for Warranty Plan ID ",V.ODBC.con!rstClaim.FieldValTrim!Warranty_Plan_ID," and Prefix ",V.ODBC.con!rstClaim.FieldValTrim!Prefix," does not exist.",V.Local.sMessage)
+							F.Intrinsic.UI.Msgbox(V.Local.sMessage)
+						F.Intrinsic.Control.Else
+							V.Local.sGLAccount.Set(V.ODBC.con!rstGL.FieldValTrim!GL_Account)
+
+							'Creating vendor file
+							F.Intrinsic.String.Concat(V.ODBC.con!rstClaim.FieldValTrim!FirstName," ",V.ODBC.con!rstClaim.FieldValTrim!LastName,V.Local.sName)
+							F.Intrinsic.String.Concat(V.Local.sVendor,"*!*",V.Local.sName,"*!*",V.ODBC.con!rstClaim.FieldValTrim!Address1,"*!*",V.ODBC.con!rstClaim.FieldValTrim!Address2,"*!*",V.ODBC.con!rstClaim.FieldValTrim!City,"*!*",V.ODBC.con!rstClaim.FieldValTrim!State,"*!*",V.Local.sVendWrite)
+							F.Intrinsic.String.Concat(V.Local.sVendWrite,V.ODBC.con!rstClaim.FieldValTrim!Zip,"*!*",V.Local.sVendWrite)
+							F.Intrinsic.String.Split(V.Local.sVendWrite,"*!*",V.Local.sVendWriteVals)
+
+							F.Intrinsic.String.PositionalString(V.Local.sVendWriteVals,V.Local.sVendWriteLen,V.Local.sVendWrite)
+							F.Intrinsic.Control.If(V.Local.sVendWriteFile,=,"")
+								V.Local.sVendWriteFile.Set(V.Local.sVendWrite)
+							F.Intrinsic.Control.Else
+								F.Intrinsic.String.Concat(V.Local.sVendWriteFile,V.Ambient.NewLine,V.Local.sVendWrite,V.Local.sVendWriteFile)
+							F.Intrinsic.Control.EndIf
+							
+							'Forming Invoice Number
+							F.Intrinsic.String.Concat(V.ODBC.con!rstClaim.FieldValTrim!Serial,V.ODBC.con!rstClaim.FieldValTrim!Prefix,V.Local.iPayID.String,V.Local.sInvoive)
+
+							'Adding payment record to table
+							F.ODBC.con!rst.AddNew
+							F.ODBC.con!rst.Set!Claim_ID(V.Local.sRowVals(0).Trim)
+							F.ODBC.con!rst.Set!Request_ID(V.Local.sRowVals(10).Long)
+							F.ODBC.con!rst.Set!Payment_ID(V.Local.iPayID)
+							F.ODBC.con!rst.Set!Request_Date(V.Local.sRowVals(1).PervasiveDate)
+							V.Local.dDate.Set(V.Ambient.Date)
+							F.ODBC.con!rst.Set!Payment_Date(V.Local.dDate)
+							F.ODBC.con!rst.Set!Requested_By(V.Local.sRowVals(2).Trim)
+							F.ODBC.con!rst.Set!Approved_By(V.Caller.User)
+							F.ODBC.con!rst.Set!Vendor_ID(V.Local.sVendor)
+							F.ODBC.con!rst.Set!AP_Batch(V.Local.sBatchNum)
+							F.ODBC.con!rst.Set!AP_Invoice(V.Local.sInvoive)
+							F.ODBC.con!rst.Set!Check_Number(-1)
+							F.ODBC.con!rst.Set!Void(1)
+							F.ODBC.con!rst.Set!Request_Amount(V.Local.sRowVals(3).Float)
+							F.ODBC.con!rst.Set!Approval_Amount(V.Local.sRowVals(4).Float)
+							F.ODBC.con!rst.Set!Approved(1)
+							F.ODBC.con!rst.Update
+
+							'Closing claim and writing close claim comment
+							F.Intrinsic.Control.If(V.Local.sRowVals(6).Long,=,1)
+								F.Intrinsic.Control.CallSub(Addudt,"Claim",V.Local.sRowVals(0).Long)
+							F.Intrinsic.Control.EndIf
+
+							'Create AP Invoice batch
+							F.Intrinsic.String.Concat(V.Local.sBatchNum,"*!*",V.Local.sAPDate,"*!*",V.Local.sVendor,"*!*",V.Local.sInvoive,"*!*",V.Local.sAPDate,"*!*",V.Local.sRowVals(4).Float,"*!*",V.Local.sGLAccount,"*!*","*!*","*!*",V.Local.sAPWrite)
+
+							F.Intrinsic.Control.If(V.Local.sAPWriteFile,=,"")
+								V.Local.sAPWriteFile.Set(V.Local.sAPWrite)
+							F.Intrinsic.Control.Else
+								F.Intrinsic.String.Concat(V.Local.sAPWriteFile,V.Ambient.NewLine,V.Local.sAPWrite,V.Local.sAPWriteFile)
+							F.Intrinsic.Control.EndIf
+
+							'Updating or deleting payment request record
+							F.Intrinsic.Math.Sub(V.Local.sRowVals(3).Float,V.Local.sRowVals(4).Float,V.Local.fCheck)
+							F.Intrinsic.Control.If(V.Local.fCheck,<=,0)
+								F.Intrinsic.String.Concat("Delete GCG_3315__Pay_Request where Request_ID = ",V.Local.sRowVals(10).Long,V.Local.sSql)
+								F.ODBC.Connection!con.Execute(V.Local.sSql)
+							F.Intrinsic.Control.Else
+								F.Intrinsic.String.Concat("Select * from GCG_3315__Pay_Request where Request_ID = ",V.Local.sRowVals(10).Long,V.Local.sSql)
+								F.ODBC.Connection!con.OpenLocalRecordsetRW("rstRequest",V.Local.sSql)
+								F.Intrinsic.Control.If(V.ODBC.con!rstRequest.EOF,=,False)
+									F.ODBC.con!rstRequest.Set!Request_Amount(V.Local.fCheck)
+									F.ODBC.con!rstRequest.Update
+								F.Intrinsic.Control.EndIf
+								F.ODBC.con!rstRequest.Close
+							F.Intrinsic.Control.EndIf
+
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstGL.Close
+					F.Intrinsic.Control.EndIf
+					F.ODBC.con!rstClaim.Close
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.Next(V.Local.i)
+
+		F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uCloseClaim.LBound,V.uGlobal.uCloseClaim.UBound,1)
+			F.Intrinsic.String.Concat("Select Close_Flag From GCG_3315__Warranty_Claim Where Claim_ID = ",V.uGlobal.uCloseClaim(V.Local.i)!Cliam_ID,V.Local.sSQL)
+			F.ODBC.Connection!con.OpenLocalRecordsetRW("rstClaim",V.Local.sSql)
+			F.Intrinsic.Control.If(V.ODBC.con!rstClaim.EOF,=,False)
+				F.ODBC.con!rstClaim.Set!Close_Flag(1)
+				F.ODBC.con!rstClaim.Update
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstClaim.Close
+
+			'We also need to add a comments to the GCG_3315__CLAIM_NOTES table
+			'get Note_ID for next id variable to use
+			F.ODBC.Connection!con.GetID("GCG_3315__CLAIM_NOTES","NOTE_ID",True,V.Local.iNoteID)
+			'Prepare a statement that says the Claim was closed by particular user
+			F.Intrinsic.String.Concat("Claim ",V.Local.sRowVals(0).String," has been closed by ",V.caller.user," ",V.Local.sMessage)
+			'Note_ID Incremented by 1, Claim_ID, Desc_Notes, User_Id who entered the notes, or closed call, and the Date/Time Entered
+			F.Intrinsic.String.Concat("Select * From GCG_3315__CLAIM_NOTES Where Claim_ID = ",V.Local.sRowVals(0).Long,V.Local.sSql)
+			F.ODBC.Connection!con.OpenlocalRecordsetRW("rstClaimNotes",V.Local.sSQL)
+			'if no records returned we need to write new record
+'			F.Intrinsic.Control.If(V.ODBC.conx!rstClaimNotes.EOF,=,True)
+			'now lets write this to the table
+			F.ODBC.con!rstClaimNotes.AddNew
+'			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstClaimNotes.Set!NOTE_ID(V.Local.iNoteID)
+			F.ODBC.con!rstClaimNotes.Set!Claim_ID(V.Local.sRowVals(0).Long)
+			F.ODBC.con!rstClaimNotes.Set!Desc_NOTES(V.Local.sMessage)
+			F.ODBC.con!rstClaimNotes.Set!User_ID(V.Caller.User)
+			F.ODBC.con!rstClaimNotes.Set!Date_Entered(V.Ambient.Now)
+			F.ODBC.con!rstClaimNotes.Update
+			F.ODBC.con!rstClaimNotes.Close
+
+			'now we need to move all the payment requests for that claim to the GCG_3315__Warranty_Pay table and have those payment requests marked as denied.
+			'query the payment request table for the requests based off of the claim id
+			F.Intrinsic.String.Concat("Select * From GCG_3315__Pay_Request  Where Claim_ID = ",V.uGlobal.uCloseClaim(V.Local.i)!Cliam_ID,V.Local.sSQL)
+			F.ODBC.Connection!con.OpenLocalRecordsetRO("rstRequest",V.Local.sSQL)
+			'need to write each record of pay request found to the GCG_3315__Warranty_Pay and mark the payments as denied
+			F.ODBC.Connection!con.OpenLocalRecordsetRW("rstPay","Select * From GCG_3315__Warranty_Pay")
+			F.Intrinsic.Control.DoUntil(V.ODBC.con!rstRequest.EOF,=,True)
+				F.ODBC.Connection!con.GetID("GCG_3315__Warranty_Pay","Payment_ID",True,V.Local.iPayID)
+				F.ODBC.con!rstPay.AddNew
+				F.ODBC.con!rstPay.Set!Payment_ID(V.Local.iPayID)
+				F.ODBC.con!rstPay.Set!Claim_ID(V.ODBC.con!rstRequest.FieldValTrim!Claim_ID)
+				F.ODBC.con!rstPay.Set!Request_Date(V.ODBC.con!rstRequest.FieldValPervasiveDate!Request_Date)
+				F.ODBC.con!rstPay.Set!Request_ID(V.ODBC.con!rstRequest.FieldValTrim!Request_ID)
+				F.ODBC.con!rstPay.Set!Payment_Date(V.Ambient.Date)
+				F.ODBC.con!rstPay.set!Approved_By(V.Caller.User)
+				F.ODBC.con!rstPay.Set!Vendor_ID("")
+				F.ODBC.con!rstPay.Set!Check_Number(-1)
+				F.ODBC.con!rstPay.Set!Void(True)
+				F.ODBC.con!rstPay.Set!Request_Amount(V.ODBC.con!rstRequest.FieldValTrim!Request_Amount)
+				F.ODBC.con!rstPay.Set!Approval_Amount(0.0)
+				F.ODBC.con!rstPay.Set!Approved(False)
+				F.ODBC.con!rstPay.Set!Requested_By(V.ODBC.con!rstRequest.FieldValTrim!Requested_By)
+				F.ODBC.con!rstPay.Update
+				F.ODBC.con!rstRequest.MoveNext
+			F.Intrinsic.Control.Loop
+			F.ODBC.con!rstPay.Close
+			F.ODBC.con!rstRequest.Close
+
+			'need to delete all values from the Pay Request table
+			F.Intrinsic.String.Concat("Delete From GCG_3315__Pay_Request Where Claim_ID = ",V.uGlobal.uCloseClaim(V.Local.i)!Cliam_ID,V.Local.sSQL)
+			F.ODBC.Connection!con.Execute(V.Local.sSQL)
+		F.Intrinsic.Control.Next(V.Local.i)
+
+		F.Intrinsic.Control.If(V.Local.sVendWriteFile,<>,"")
+			F.Intrinsic.File.String2File(V.Local.sVendFile,V.Local.sVendWriteFile)
+			F.Intrinsic.String.Concat(V.Ambient.QuadQuote,V.Caller.CompanyCode,"1UPLVEND",V.Ambient.QuadQuote,V.Local.sExecute)
+			F.Intrinsic.Task.LaunchGSSSync("UPL001A"," -c",V.Local.sExecute)
+		F.Intrinsic.Control.EndIf
+
+		F.Intrinsic.Control.If(V.Local.sAPWriteFile,<>,"")
+			F.Intrinsic.File.String2File(V.Local.sAPFile,V.Local.sAPWriteFile)
+			F.Global.General.CallWrapperSync(50,"AP043UP2")
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.CallSub(Loadgrid)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdsavepay_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdsavepay_click.end
+
+program.sub.gsfgpayments_checkclick.start
+F.Intrinsic.Control.SetErrorHandler("gsfgpayments_checkclick_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRow.Declare(String)
+V.Local.sRowVals.Declare(String)
+V.Local.iRows.Declare(Long)
+V.Local.iRowOrd.Declare(Long)
+V.Local.i.Declare(Long)
+V.Local.sClaimID.Declare(String)
+
+'Splitting row to get claim ID and check value
+Gui.F_Payments.gsfgPayments.ReadRow(V.Args.Key,V.Local.sRow)
+F.Intrinsic.String.Split(V.Local.sRow,"*!*",V.Local.sRowVals)
+V.Local.iRows.Set(V.Screen.F_Payments!gsfgPayments.Rows)
+F.Intrinsic.Control.For(V.Local.i,2,V.Local.iRows,1)
+	F.Intrinsic.Math.Sub(V.Local.i,1,V.Local.iRowOrd)
+	Gui.F_Payments.gsfgPayments.GetTextMatrix(0,V.Local.iRowOrd,V.Local.sClaimID)
+	F.Intrinsic.Control.If(V.Local.sRowVals(0).Long,=,V.Local.sClaimID.Long)
+		Gui.F_Payments.gsfgPayments.TextMatrix(V.Args.Column,V.Local.iRowOrd,V.Local.sRowVals(6).Long)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("gsfgpayments_checkclick_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.gsfgpayments_checkclick.end
+
+Program.Sub.AddUDT.Start
+F.Intrinsic.Control.SetErrorHandler("AddUDT_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+V.Local.iUB.Declare(Long)
+
+F.Intrinsic.Control.If(V.uGlobal.uCloseClaim.UBound,=,-1)
+	V.uGlobal.uCloseClaim.Redim(0,0)
+	V.uGlobal.uCloseClaim!Cliam_ID.Set(V.Args.Claim.Long)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Variable.UDTSeek(V.uGlobal.uCloseClaim!Cliam_ID,V.Args.Claim.Long,1,V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet,=,"")
+		V.Local.iUB.Set(V.uGlobal.uCloseClaim.UBound)
+		F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+		V.uGlobal.uCloseClaim.RedimPreserve(0,V.Local.iUB)
+		V.uGlobal.uCloseClaim(V.Local.iUB)!Cliam_ID.Set(V.Args.Claim.Long)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("AddUDT_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3315__Warranty_Payment.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(F_payments_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.AddUDT.End
+
+Program.Sub.Comments.Start
+${$0$}$GCG_Warranty_Payment$}$MLA$}$12/18/2012
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$ECP
+Program.Sub.Comments.End
+
