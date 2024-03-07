@@ -1,0 +1,580 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Warranty Plan ID Maintenance")
+gui.SS_Form1..size(6360,5115)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_txtPlanID.create(label,"Plan ID",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtPlanID.create(textbox,"",True,3690,330,0,100,335,True,0,Arial,8,16777215,1)
+gui.SS_Form1.txtPlanID.event(lostfocus,txtplanid_lostfocus)
+gui.SS_Form1.cmd_txtPlanID.create(button)
+gui.SS_Form1.cmd_txtPlanID.caption("^")
+gui.SS_Form1.cmd_txtPlanID.visible(True)
+gui.SS_Form1.cmd_txtPlanID.size(330,330)
+gui.SS_Form1.cmd_txtPlanID.zorder(0)
+gui.SS_Form1.cmd_txtPlanID.position(3875,335)
+gui.SS_Form1.cmd_txtPlanID.enabled(True)
+gui.SS_Form1.cmd_txtPlanID.fontname("Arial")
+gui.SS_Form1.cmd_txtPlanID.fontsize(8)
+gui.SS_Form1.cmd_txtPlanID.event(click,planidbrowse)
+gui.SS_Form1.cmdDelete.create(button)
+gui.SS_Form1.cmdDelete.caption("Delete")
+gui.SS_Form1.cmdDelete.visible(True)
+gui.SS_Form1.cmdDelete.size(1000,360)
+gui.SS_Form1.cmdDelete.zorder(0)
+gui.SS_Form1.cmdDelete.position(100,750)
+gui.SS_Form1.cmdDelete.enabled(True)
+gui.SS_Form1.cmdDelete.fontname("Arial")
+gui.SS_Form1.cmdDelete.fontsize(8)
+gui.SS_Form1.cmdDelete.event(click,delete)
+gui.SS_Form1.cmdClear.create(button)
+gui.SS_Form1.cmdClear.caption("Clear")
+gui.SS_Form1.cmdClear.visible(True)
+gui.SS_Form1.cmdClear.size(1000,360)
+gui.SS_Form1.cmdClear.zorder(0)
+gui.SS_Form1.cmdClear.position(1185,750)
+gui.SS_Form1.cmdClear.enabled(True)
+gui.SS_Form1.cmdClear.fontname("Arial")
+gui.SS_Form1.cmdClear.fontsize(8)
+gui.SS_Form1.cmdClear.event(click,clear)
+gui.SS_Form1.gsflxUserFields.create(gsflexgrid)
+gui.SS_Form1.gsflxUserFields.FixedRows(0)
+gui.SS_Form1.gsflxUserFields.FixedCols(0)
+gui.SS_Form1.gsflxUserFields.visible(True)
+gui.SS_Form1.gsflxUserFields.size(5805,2880)
+gui.SS_Form1.gsflxUserFields.zorder(0)
+gui.SS_Form1.gsflxUserFields.position(100,1200)
+gui.SS_Form1.gsflxUserFields.enabled(True)
+gui.SS_Form1.cmdSave.create(button)
+gui.SS_Form1.cmdSave.caption("Save")
+gui.SS_Form1.cmdSave.visible(True)
+gui.SS_Form1.cmdSave.size(1000,360)
+gui.SS_Form1.cmdSave.zorder(0)
+gui.SS_Form1.cmdSave.position(100,4160)
+gui.SS_Form1.cmdSave.enabled(True)
+gui.SS_Form1.cmdSave.fontname("Arial")
+gui.SS_Form1.cmdSave.fontsize(8)
+gui.SS_Form1.cmdSave.event(click,Save)
+
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.UDT.uPlanID.Define("Name",String,Name)
+Variable.UDT.uPlanID.Define("Used",Boolean,Used)
+Variable.UDT.uPlanID.Define("Track",Boolean,Track)
+Variable.UDT.uPlanID.Define("ID",Long,ID)
+Variable.UDT.uPlanID.Define("Plan_ID",String,Plan_ID)
+Variable.uGlobal.uPlanID.Declare("uPlanID")
+Variable.Global.sPlanID.Declare(String)
+Program.Sub.Preflight.End
+
+
+Program.Sub.Main.Start
+'Quote 3849
+'ECP Incorporated
+'Warranty Plan Maintenance
+
+'This program will allow the user to either select and existing ID, create a new, or Delete an Id.
+'A flexgrid will populate with the columns, ID, Name, Used, Track
+'User will be ID User1-User74 will be the values
+'Name (This will be what the user says the field should be displayed as in the Warrany Program)
+'Used( A checkbox that will signla this field is used for the warranty plan )
+'Track (a checkbox that will signla what fields are tracked when a warrany is transferrred from one owner to another.)
+
+'open connection
+F.ODBC.Connection!conx.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+
+'hide the flexgrid and the save button on open and change the screen size
+Gui.SS_Form1.cmdSave.Enabled(False)
+Gui.SS_Form1.gsflxUserFields.Enabled(False)
+'Gui.SS_Form1..Size(6265,1710)
+'show the form
+Gui.SS_Form1..Show
+F.Intrinsic.Control.CallSub(Buildstyle)
+
+
+Program.Sub.Main.End
+
+
+Program.Sub.PlanIDBrowse.Start
+F.Intrinsic.Control.SetErrorHandler("PlanIDBrowse_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+''Browser that will query the Plan ID from the GCG_Warranty_Plans table
+'V.Local.sRet.Declare(String)
+'V.Local.sTitle.Declare(String)
+'V.Local.iWidths.Declare(Long)
+
+V.Local.sRet.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.iWidths.Declare(Long)
+V.Local.sSQL.Declare(String)
+V.Local.iC.Declare(String)
+
+
+
+
+
+F.Intrinsic.String.Split("Plan ID","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("6710","*!*",V.Local.iWidths)
+
+V.Local.sSQL.Set("Select Distinct Plan_ID From GCG_3315__PLANID_USRFLD Where ID = '1'")
+
+
+F.Intrinsic.ui.Browser("Select Plan ID","CONX",V.Local.sSQL,V.Local.sTitles,V.Local.iWidths,5000,8000,V.Local.sRet)
+
+F.Intrinsic.Control.If(V.Local.sRet,=,"***CANCEL***")
+	F.Intrinsic.Control.exitsub
+F.Intrinsic.Control.Elseif(V.Local.sRet,<>,"")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtPlanID.Text(V.Local.sRet(0))
+	V.Global.sPlanID.Set(V.Local.sRet(0))
+	Gui.SS_Form1.cmd_txtPlanID.Enabled(False)
+	f.Intrinsic.Control.CallSub(Populate)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PlanIDBrowse_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Maint.GAS",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.PlanIDBrowse.End
+
+
+Program.Sub.Save.Start
+F.Intrinsic.Control.SetErrorHandler("Save_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Save button is clicked
+
+
+
+
+
+V.Local.sSQL.Declare(String)
+V.Local.sRowContents.Declare(String)
+V.Local.iRowCount.Declare(Long)
+V.Local.sMessage.Declare(String)
+
+
+'commit the data in the flexgrid prior to this save
+Gui.SS_Form1.gsflxUserFields.Commit
+Gui.SS_Form1..Enabled(False)
+'get the number of rows, should be 75
+V.Local.iRowCount.Set(V.Screen.SS_Form1!gsflxUserFields.Rows)
+
+F.Intrinsic.UI.InvokeWaitDialog("Saving Data...","Saving")
+
+
+'Query the Table for the records based on the contents of the row for all 75 rows of the flexgrid
+'starting at 1, because row 0 is the header row
+F.Intrinsic.Control.For(V.Local.iRowCount,1,75,1)
+	F.Intrinsic.UI.ChangeWaitStatus("Saving Data...",V.Local.iRowCount,0,75)
+	'read the contents of the row
+	Gui.SS_Form1.gsflxUserFields.ReadRow(V.Local.iRowCount,V.Local.sRowContents)
+	'split the contents of the row
+	F.Intrinsic.String.Split(V.Local.sRowContents,"*!*",V.Local.sRowContents)
+		'check to see if something is in the name field
+'		F.intrinsic.control.if(V.local.srowcontents(1).Trim,<>,"")
+'			F.Intrinsic.Control.If(V.Local.sRowContents(2).Trim,=,"1")
+'				F.Intrinsic.Control.If(V.Local.sRowContents(3).Trim,=,"1")
+					'perform a query on the table looking for that row with the plan id and corresponding ID field 	
+					F.Intrinsic.String.Concat("Select * From GCG_3315__PLANID_USRFLD Where Plan_ID = '",V.Global.sPlanID,"' AND ID = '",V.Local.sRowContents(0),"'",V.Local.sSQL)
+					F.ODBC.Connection!conx.OpenRecordsetRW("rstSave",V.Local.sSQL)
+					'if no record is found AddNew
+					F.Intrinsic.Control.If(V.ODBC.conx!rstSave.EOF,=,True)
+						F.ODBC.conx!rstSave.AddNew
+						F.ODBC.conx!rstSave.Set!Plan_ID(V.Global.sPlanID)
+						F.ODBC.conx!rstSave.Set!ID(V.Local.sRowContents(0))
+					F.Intrinsic.Control.Endif
+					'write records to the table
+						F.ODBC.conx!rstSave.Set!Name(V.Local.sRowContents(1))
+						F.ODBC.conx!rstSave.Set!Used(V.Local.sRowContents(2))
+						F.ODBC.conx!rstSave.Set!Track(V.Local.sRowContents(3))
+''				F.Intrinsic.Control.Else
+'					'means that the Used is checked, and the track is not checked
+'					'perform a query on the table looking for that row with the plan id and corresponding ID field 	
+'					F.Intrinsic.String.Concat("Select * From GCG_PLANID_USRFLD Where Plan_ID = '",V.Global.sPlanID,"' AND ID = '",V.Local.sRowContents(0),"'",V.Local.sSQL)
+'					F.ODBC.Connection!conx.OpenRecordsetRW("rstSave",V.Local.sSQL)
+'					'if no record is found AddNew
+'					F.Intrinsic.Control.If(V.ODBC.conx!rstSave.EOF,=,True)
+'						F.ODBC.conx!rstSave.AddNew
+'						F.ODBC.conx!rstSave.Set!Plan_ID(V.Global.sPlanID)
+'						F.ODBC.conx!rstSave.Set!ID(V.Local.sRowContents(0))
+'					F.Intrinsic.Control.Endif
+'					'write records to the table
+'						F.ODBC.conx!rstSave.Set!Name(V.Local.sRowContents(1))
+'						F.ODBC.conx!rstSave.Set!Used(V.Local.sRowContents(2))
+'						F.ODBC.conx!rstSave.Set!Track(V.Local.sRowContents(3))
+''					F.Intrinsic.Control.EndIf
+''				F.Intrinsic.Control.EndIf
+'				'if the value is unchecked from a previous check use value we need to check in the table to see if it was previously saved in there
+'			'means that used in unchecked
+''			F.Intrinsic.Control.ElseIF(V.Local.sRowContents(2).Trim,=,0)
+'				'check to see if track is checked
+'				F.Intrinsic.Control.If(V.Local.sRowContents(3).Trim,=,"1")
+'					'perform a query on the table looking for that row with the plan id and corresponding ID field 	
+'					F.Intrinsic.String.Concat("Select * From GCG_PLANID_USRFLD Where Plan_ID = '",V.Global.sPlanID,"' AND ID = '",V.Local.sRowContents(0),"'",V.Local.sSQL)
+'					F.ODBC.Connection!conx.OpenRecordsetRW("rstSave",V.Local.sSQL)
+'					'if no record is found AddNew
+'					F.Intrinsic.Control.If(V.ODBC.conx!rstSave.EOF,=,True)
+'						F.ODBC.conx!rstSave.AddNew
+'						F.ODBC.conx!rstSave.Set!Plan_ID(V.Global.sPlanID)
+'						F.ODBC.conx!rstSave.Set!ID(V.Local.sRowContents(0))
+'					F.Intrinsic.Control.EndIf
+'					'write records to the table
+'						F.ODBC.conx!rstSave.Set!Name(V.Local.sRowContents(1))
+'						F.ODBC.conx!rstSave.Set!Used(V.Local.sRowContents(2))
+'						F.ODBC.conx!rstSave.Set!Track(V.Local.sRowContents(3))
+''					F.Intrinsic.Control.EndIf
+''				F.Intrinsic.Control.Else
+'					'perform a query on the table looking for that row with the plan id and corresponding ID field 	
+'					F.Intrinsic.String.Concat("Select * From GCG_PLANID_USRFLD Where Plan_ID = '",V.Global.sPlanID,"' AND ID = '",V.Local.sRowContents(0),"'",V.Local.sSQL)
+'					F.ODBC.Connection!conx.OpenRecordsetRW("rstSave",V.Local.sSQL)
+'					'if no record is found AddNew
+'					F.Intrinsic.Control.If(V.ODBC.conx!rstSave.EOF,=,True)
+'						F.ODBC.conx!rstSave.AddNew
+'						F.ODBC.conx!rstSave.Set!Plan_ID(V.Global.sPlanID)
+'						F.ODBC.conx!rstSave.Set!ID(V.Local.sRowContents(0))
+'					F.Intrinsic.Control.Endif
+'					'write records to the table
+'						F.ODBC.conx!rstSave.Set!Name(V.Local.sRowContents(1))
+'						F.ODBC.conx!rstSave.Set!Used(V.Local.sRowContents(2))
+'						F.ODBC.conx!rstSave.Set!Track(V.Local.sRowContents(3))
+''					F.Intrinsic.Control.EndIf
+'				F.Intrinsic.Control.EndIf
+'			F.Intrinsic.Control.EndIf
+		F.ODBC.conx!rstSave.Update
+		F.ODBC.conx!rstSave.Close
+'	F.Intrinsic.Control.Else
+'		'if something is not in the name field, the user could of edited it and found it to be not needed anymore
+'		'it will still be in the table so we need to look for it and if it is in there we should delete it?
+'		F.Intrinsic.String.Concat("Select * From GCG_PLANID_USRFLD Where Plan_ID = '",V.Global.sPlanID,"' AND ID = '",V.Local.sRowContents(0),"'",V.Local.sSQL)
+'		F.ODBC.Connection!conx.OpenRecordsetRW("rstSave",V.Local.sSQL)
+'		F.Intrinsic.Control.If(V.ODBC.conx!rstSave.EOF,<>,True)
+'		'meaning something was found in the table, we need to delete it from that table?
+''			F.Intrinsic.UI.Msgbox(V.Local.sRowContents(0))
+'			F.Intrinsic.String.Concat("Delete From GCG_PLANID_USRFLD Where Plan_ID ='",V.global.sPlanID,"' And ID = '",V.Local.sRowContents(0),"'",V.Local.sSQL)
+'			F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+''		F.Intrinsic.Control.EndIf
+''	F.ODBC.conx!rstSave.Close
+'	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.local.iRowCount)
+F.Intrinsic.UI.CloseWaitDialog
+'let them know the selected plan id and its contents have been saved?
+F.Intrinsic.String.Concat("Plan ID: ",V.Global.sPlanID.Trim," Saved.",V.Local.sMessage)
+F.Intrinsic.UI.Msgbox(V.Local.sMessage,"Plan ID Saved")
+Gui.SS_Form1..Enabled(True)
+F.Intrinsic.Control.CallSub(Clear)
+
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Save_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Maint.GAS",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Save.End
+
+
+Program.Sub.Delete.Start
+'Subroutine will Delete the selected Plan ID
+'from the GCG_PLANID_USRFLD table
+
+V.Local.sSQL.Declare(String)
+V.Local.sMessage.Declare(String)
+V.Local.sRet.Declare(String)
+
+'error check
+F.Intrinsic.Control.If(V.Screen.SS_Form1!txtPlanID.Text,=,"")
+	'plan id not selected
+	F.Intrinsic.UI.Msgbox("Please select a Plan ID to Delete.","No Plan ID Selected")
+	Gui.SS_Form1.txtPlanID.setfocus
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'confirm that the user wants to delete the selected Plan ID
+F.Intrinsic.String.Concat("Delete Plan ID: ",V.Global.sPlanID.Trim,"?",V.Local.sMessage)
+F.Intrinsic.UI.Msgbox(V.Local.sMessage,"Confirm Delete",4,V.Local.sRet)
+'either selected yes or no, returns 6 for yet, and 7 for no
+F.Intrinsic.Control.If(V.Local.sRet,=,"6")
+	'Query for the selected plan ID for deletion
+	F.Intrinsic.String.Concat("Delete From GCG_3315__PLANID_USRFLD Where Plan_ID = '",V.global.splanid,"'",V.Local.sSQL)
+	F.ODBC.Connection!conx.Execute(V.Local.sSQL)
+	'Message box saying that the Plan ID has been deleted
+	F.Intrinsic.String.Concat("Plan ID:",V.Global.sPlanID.Trim," has been deleted.",V.Local.sMessage)
+	F.Intrinsic.UI.Msgbox(V.local.sMessage,"Plan ID Deleted")
+	F.Intrinsic.Control.CallSub(Clear)
+F.Intrinsic.Control.Else
+	'else they did not choose delete the plan id selected, just exit the sub
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+'when completed exit sub
+F.Intrinsic.Control.ExitSub
+
+
+Program.Sub.Delete.End
+
+
+Program.Sub.Clear.Start
+'Subroutine will Clear all Plan ID field
+'and clear will clear the screen for a new selection to be made
+
+Gui.SS_Form1.txtPlanID.text("")
+Gui.SS_Form1.txtPlanID.Enabled(True)
+Gui.SS_Form1.txtPlanID.SetFocus
+Gui.SS_Form1.cmd_txtPlanID.Enabled(True)
+Gui.SS_Form1.gsflxUserFields.Enabled(False)
+Gui.SS_Form1.cmdSave.Enabled(False)
+'Gui.SS_Form1.gsflxUserFields.Visible(false)
+'Gui.SS_Form1.cmdSave.Visible(False)
+
+'F.Intrinsic.Control.CallSub(Buildstyle)
+'shrink the form
+'Gui.SS_Form1..Size(6265,1710)
+F.Intrinsic.Control.CallSub(Buildstyle)
+
+'close all recordsets
+F.ODBC.Connection!conx.CloseRecordsets
+F.Intrinsic.Control.ExitSub
+
+Program.Sub.Clear.End
+
+
+Program.Sub.Unload.Start
+'close the form
+F.ODBC.Connection!conx.CloseRecordsets
+F.ODBC.Connection!conx.Close
+F.Intrinsic.Control.End
+
+Program.Sub.Unload.End
+
+
+Program.Sub.BuildStyle.Start
+'Buildstyle for the gsflxUserFields
+
+V.Local.iC.Declare(Long)
+V.Local.stemp.Declare(String)
+
+Gui.SS_Form1.gsflxUserFields.Rows(1)
+
+Gui.SS_Form1.gsflxUserFields.Rows(2)
+Gui.SS_Form1.gsflxUserFields.FixedRows(1)
+Gui.SS_Form1.gsflxUserFields.Cols(4)
+Gui.SS_Form1.gsflxUserFields.SetColumnPercentages(".20:.3998:.2:.20")
+'Gui.SS_Form1.gsflxUserFields.SetColumnPercentages(".1:.5:.20:.20")
+
+
+'Column 1 ID
+Gui.SS_Form1.gsflxUserFields.TextMatrix(0,0,"ID")
+'Style 1
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,0,"Type","Locked",True)
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,0,"Format","Alignment",2)
+'style 2
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,0,"Type","Locked",True)
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,0,"Format","Alignment",2)
+
+'column 2 Name
+Gui.SS_Form1.gsflxUserFields.TextMatrix(1,0,"Name")
+'style 1
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,1,"Type","Locked",True)
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,1,"Format","Alignment",2)
+'style 2
+Gui.SS_Form1.gsflxUserFields.Buildstyle(2,1,"Format","MaxLength",49)
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,1,"Format","Alignment",2)
+'column 3 Used
+Gui.SS_Form1.gsflxUserFields.TextMatrix(2,0,"Used")
+'style 1
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,2,"Type","Locked",True)
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,2,"Format","Alignment",2)
+'style 2
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,2,"Type","CheckBox","")
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,2,"Format","Alignment",2)
+
+'column 4 Track
+Gui.SS_Form1.gsflxUserFields.TextMatrix(3,0,"Track")
+'style 1
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,3,"Type","Locked",True)
+Gui.SS_Form1.gsflxUserFields.BuildStyle(1,3,"Format","Alignment",2)
+'style 2
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,3,"Type","checkbox","")
+Gui.SS_Form1.gsflxUserFields.BuildStyle(2,3,"Format","Alignment",2)
+
+Gui.SS_Form1.gsflxUserFields.ApplyStyle(0,1)
+
+
+
+
+
+
+
+Program.Sub.BuildStyle.End
+
+
+Program.Sub.Populate.Start
+F.Intrinsic.Control.SetErrorHandler("Populate_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'Subroutine that will populate the flexgrid
+
+V.Local.sSQL.Declare(String)
+V.Local.iC.Declare(Long)
+
+Gui.SS_Form1.gsflxUserFields.Visible(False)
+
+F.Intrinsic.Control.CallSub(Buildstyle)
+Gui.SS_Form1.gsflxUserFields.Rows(76)
+V.Global.sPlanID.Set(V.Screen.SS_Form1!txtPlanID.Text)
+F.Intrinsic.String.Concat("Select * From GCG_3315__PlanID_USRFLD Where Plan_ID ='",V.Global.sPlanID,"' Order by ID",V.Local.sSQL)
+F.ODBC.Connection!conx.OpenRecordsetRO("rstPop",V.Local.sSQL)
+F.Intrinsic.UI.InvokeWaitDialog("Loading...","Load")
+'set v.local.ic to 1 because row 0 is already established as row????
+V.Local.iC.Set("1")
+F.Intrinsic.Control.DoUntil(V.Local.iC,=,76)
+
+	F.Intrinsic.UI.ChangeWaitStatus("Loading...",V.Local.iC,0,76)
+	 F.Intrinsic.Control.If(V.ODBC.conx!rstPop.EOF,=,False)
+		'got to keep the ID's in order with the recordset, may have skipped some lines
+		F.Intrinsic.Control.If(V.Local.iC.Trim,=,V.ODBC.conx!rstPop.FieldValTrim!ID)
+			'populate the flexgrid with the elements from the recordset
+			Gui.SS_Form1.gsflxUserFields.TextMatrix(0,V.Local.iC,V.ODBC.conx!rstPop.FieldValTrim!ID)
+			Gui.SS_Form1.gsflxUserFields.TextMatrix(1,V.Local.iC,V.ODBC.conx!rstPop.FieldValTrim!Name)
+			Gui.SS_Form1.gsflxUserFields.TextMatrix(2,V.Local.iC,V.ODBC.conx!rstPop.FieldValTrim!Used)
+			Gui.SS_Form1.gsflxUserFields.TextMatrix(3,V.Local.iC,V.ODBC.conx!rstPop.FieldValTrim!Track)
+			Gui.SS_Form1.gsflxUserFields.ApplyStyle(V.Local.iC,2)
+			F.ODBC.conx!rstPop.MoveNext
+			F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iC)
+		F.Intrinsic.Control.Else
+			'going to create blank rows if the eof has not been reached, and the id is not the same as the row count, must keep this in sequential order
+			'have to add a blank row
+			Gui.SS_Form1.gsflxUserFields.TextMatrix(0,V.Local.iC,V.Local.iC)
+			Gui.SS_Form1.gsflxUserFields.ApplyStyle(V.Local.iC,2)
+			F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iC)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Else
+		Gui.SS_Form1.gsflxUserFields.TextMatrix(0,V.Local.iC,V.Local.ic)
+		Gui.SS_Form1.gsflxUserFields.ApplyStyle(V.Local.iC,2)
+		F.Intrinsic.Math.Add(V.Local.iC,1,V.Local.iC)
+	F.Intrinsic.Control.EndIF
+F.Intrinsic.Control.Loop
+
+'also the screen will need to be resized
+'and the flexgrid and the save button will need to be reactivated
+Gui.SS_Form1.txtPlanID.Enabled(False)
+Gui.SS_Form1.cmd_txtPlanID.Enabled(false)
+'Gui.SS_Form1..Size(6265,5010)
+Gui.SS_Form1.gsflxUserFields.Visible(True)
+Gui.SS_Form1.gsflxUserFields.Enabled(True)
+Gui.SS_Form1.cmdSave.Visible(True)
+Gui.SS_Form1.cmdSave.Enabled(True)
+F.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Populate_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Maint.GAS",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Populate.End
+
+
+program.sub.txtplanid_lostfocus.start
+F.Intrinsic.Control.SetErrorHandler("load_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+'this when a user has entered in the text box and either
+'hit enter, only when the user clicked new should this happen
+
+V.Local.sReturn.Declare(String)
+V.Local.sPlanID.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sMessage.Declare(String)
+
+
+
+
+V.Local.sPlanID.Set(V.Screen.SS_Form1!txtPlanID.Text)
+F.Intrinsic.Control.If(V.Local.sPlanID.Trim,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'Gui.SS_Form1.gsflxUserFields.Visible(False)
+'query the table for this plan id to see if already exists
+F.Intrinsic.String.Concat("Select ID, Name, Used, Track from GCG_3315__PLANID_USRFLD Where Plan_ID = '",V.Local.sPlanID,"' Order By ID",V.Local.sSQL)
+F.ODBC.Connection!conx.OpenRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.conx!rst.EOF,=,False)
+	'call the populate sub
+	F.Intrinsic.Control.CallSub(Populate)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Else
+	'that means that this ID doesnt exist and we need to ask if they want to create a new
+	Gui.SS_Form1.txtPlanID.Enabled(False)
+	F.Intrinsic.UI.Msgbox("Plan ID entered does not exist.  Would you like to create a new Plan ID?","Plan ID",4,V.Local.sReturn)
+	'meaning they chose yes
+	F.Intrinsic.Control.If(V.Local.sReturn,=,6)
+		Gui.SS_Form1.txtPlanID.Enabled(False)
+		F.Intrinsic.Control.CallSub(Populate)
+		F.ODBC.conx!RST.Close
+	F.Intrinsic.Control.Else
+		'they have selected no from message box
+		Gui.SS_Form1.txtPlanID.Text("")
+		Gui.SS_Form1.txtPlanID.Enabled(True)
+		Gui.SS_Form1.txtPlanID.SetFocus
+		F.ODBC.conx!RST.Close
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("load_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Warranty_Maint.GAS",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+
+program.sub.txtplanid_lostfocus.end
+
+
+
